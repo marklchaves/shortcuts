@@ -22,7 +22,7 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Shorties Shortcuts PWA</title>
+    <title>Shorties - Another Shortcuts PWA</title>
     <meta name="shortcuts" content="sc-v1" />
     <link rel="stylesheet" type="text/css" href="/styles/inline.css" />
     <link rel="icon" href="/images/favicon.ico" type="image/x-icon" />
@@ -57,40 +57,46 @@
     -->
 
       <div id="about" class="weather-card">
-        <h2>Shorty Shortcuts App</h2>
+        <h2>Shorties - Another Shortcuts App</h2>
       </div>
 
       <div class="weather-card">
         <div class="form-wrapper">
-          
-        <form onsubmit="return formSubmitted();">
-            
-          <fieldset class="fieldset">
-              
-            <legend>New Shorty</legend>
-            <label for="name"
-              ><span>Name</span>
-              <input type="text" id="name" required />
-            </label>
-            <label for="url"
-              ><span>URL</span>
-              <input size="50" type="url" id="url" required />
-            </label>
-            <br /><br />
-            <button class="copy-button">Add</button>
-          </fieldset>
-
-        </form>
-
-                  </div>
-
-        <p>
-          <button class="copy-button" onclick="emptyList();">Empty</button>
-          <button class="copy-button" onclick="cm.save();">Save</button>
-          <button class="copy-button" onclick="loadList();">Load</button>
-          <!-- Added 19 Jan 2020 ~mlc -->
-          <button class="copy-button" onclick="sort();">Sort</button>
-        </p>
+          <form onsubmit="return formSubmitted();">
+            <fieldset class="fieldset">
+              <legend>New Shorty</legend>
+              <label for="name">
+                <span>Name</span>
+                <input type="text" id="name" required />
+              </label>
+              <label for="url">
+                <span>URL</span>
+                <input
+                  size="50"
+                  type="url"
+                  id="url"
+                  value="https://"
+                  required
+                />
+                <button class="copy-button">Add</button>
+              </label>
+            </fieldset>
+          </form>
+        </div>
+        <div class="button-set">
+          <div class="left-set">
+            <button class="copy-button" onclick="emptyList();">Empty</button>
+            <button class="copy-button" onclick="loadList();">Load</button>
+          </div>
+          <div class="right-set">
+            <button id="sort-btn" class="copy-button" onclick="sort();">
+              Sort
+            </button>
+            <button id="save-btn" class="copy-button" onclick="cm.save();">
+              Save
+            </button>
+          </div>
+        </div>
       </div>
 
       <div class="weather-card">
@@ -114,10 +120,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.4.0/clipboard.min.js"></script>
     <script src="/scripts/luxon-1.11.4.js"></script>
     <script src="/scripts/app.js"></script>
-    <!-- CODELAB: Add the install script here -->
     <script src="/scripts/install.js"></script>
     <script>
-      // CODELAB: Register service worker.
       if ("serviceWorker" in navigator) {
         window.addEventListener("load", () => {
           navigator.serviceWorker.register("/service-worker.js").then(reg => {
