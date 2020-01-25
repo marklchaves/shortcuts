@@ -18,103 +18,113 @@
 
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>S3ForCA Shortcuts PWA</title>
-  <meta name="s3forca" content="sc-v1">
-  <link rel="stylesheet" type="text/css" href="/styles/inline.css">
-  <link rel="icon" href="/images/favicon.ico" type="image/x-icon" />
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shorties Shortcuts PWA</title>
+    <meta name="shortcuts" content="sc-v1" />
+    <link rel="stylesheet" type="text/css" href="/styles/inline.css" />
+    <link rel="icon" href="/images/favicon.ico" type="image/x-icon" />
 
-  <!-- CODELAB: Add link rel manifest -->
-  <link rel="manifest" href="/manifest.json">
-  <!-- CODELAB: Add iOS meta tags and icons -->
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <meta name="apple-mobile-web-app-title" content="S3ForCA Shortcuts PWA">
-  <link rel="apple-touch-icon" href="/images/icons/icon-152x152.png">
-  <!-- CODELAB: Add description here -->
-  <meta name="description" content="Scaling Student Success Shortcuts App">
-  <!-- CODELAB: Add meta theme-color -->
-  <meta name="theme-color" content="#2F3BA2" />
+    <!-- CODELAB: Add link rel manifest -->
+    <link rel="manifest" href="/manifest.json" />
+    <!-- CODELAB: Add iOS meta tags and icons -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="apple-mobile-web-app-title" content="Shortcuts PWA" />
+    <link rel="apple-touch-icon" href="/images/icons/icon-152x152.png" />
+    <!-- CODELAB: Add description here -->
+    <meta name="description" content="Shortcuts App" />
+    <!-- CODELAB: Add meta theme-color -->
+    <meta name="theme-color" content="#2F3BA2" />
+  </head>
+  <body>
+    <header class="header">
+      <h1>
+        <a href="https://caughtmyeye.dev/">
+          a cme dev production
+        </a>
+      </h1>
+      <button id="butInstall" aria-label="Install" hidden></button>
+    </header>
 
-</head>
-<body>
-
-  <header class="header">
-    <h1>
-      <a href="https://scalingstudentsuccess.org/">
-        Scaling Student Success
-      </a>
-    </h1>
-    <button id="butInstall" aria-label="Install" hidden></button>
-  </header>
-
-  <main class="main">
-
-    <!--
+    <main class="main">
+      <!--
     <button id="butAdd" class="fab" aria-label="Add">
       <span class="icon add"></span>
     </button>
     -->
 
-    <div id="about" class="weather-card">
-      <h2>Shortcuts App</h2>
-    </div>
-    
-    <div class="weather-card">
-      <p>
-        Who We Are &gt; Cohort 1a 
-      </p>
-      <div class="copy-card">
-        <input id="copy-link1" value="https://scalingstudentsuccess.org/who-we-are/#cohort-1a" size="50" readonly>
-        &nbsp;
-        <button onclick="alert('Copied')" class="copy-button" id="copy-button1" data-clipboard-target="#copy-link1">Copy</button>
+      <div id="about" class="weather-card">
+        <h2>Shorty Shortcuts App</h2>
       </div>
-    </div>
-    
-    <div class="weather-card">
-      <p>
-        How We Work &gt; Local Strategy
-      </p>
-      <div class="copy-card">
-        <input id="copy-link2" value="scalingstudentsuccess.org/how-we-work/#local-strategy" size="50" readonly>
-        &nbsp;
-        <button onclick="alert('Copied')" class="copy-button" id="copy-button2" data-clipboard-target="#copy-link2">Copy</button>
-      </div>
-    </div>
-   
-  </main>
 
-  <div id="addDialogContainer">
-    <div class="dialog">
-      <div class="dialog-title">Add new city</div>
-      <div class="dialog-body">
+      <div class="weather-card">
+        <div class="form-wrapper">
+          
+        <form onsubmit="return formSubmitted();">
+            
+          <fieldset class="fieldset">
+              
+            <legend>New Shorty</legend>
+            <label for="name"
+              ><span>Name</span>
+              <input type="text" id="name" required />
+            </label>
+            <label for="url"
+              ><span>URL</span>
+              <input size="50" type="url" id="url" required />
+            </label>
+            <br /><br />
+            <button class="copy-button">Add</button>
+          </fieldset>
+
+        </form>
+
+                  </div>
+
+        <p>
+          <button class="copy-button" onclick="emptyList();">Empty</button>
+          <button class="copy-button" onclick="cm.save();">Save</button>
+          <button class="copy-button" onclick="loadList();">Load</button>
+          <!-- Added 19 Jan 2020 ~mlc -->
+          <button class="copy-button" onclick="sort();">Sort</button>
+        </p>
       </div>
-      <div class="dialog-buttons">
-        <button id="butDialogCancel" class="button">Cancel</button>
-        <button id="butDialogAdd" class="button">Add</button>
+
+      <div class="weather-card">
+        <h2>List of Shorties</h2>
+
+        <div id="shortcuts"></div>
+      </div>
+    </main>
+
+    <div id="addDialogContainer">
+      <div class="dialog">
+        <div class="dialog-title">Add new city</div>
+        <div class="dialog-body"></div>
+        <div class="dialog-buttons">
+          <button id="butDialogCancel" class="button">Cancel</button>
+          <button id="butDialogAdd" class="button">Add</button>
+        </div>
       </div>
     </div>
-  </div>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.4.0/clipboard.min.js"></script>
-  <script src="/scripts/luxon-1.11.4.js"></script>
-  <script src="/scripts/app.js"></script>
-  <!-- CODELAB: Add the install script here -->
-  <script src="/scripts/install.js"></script>
-  <script>
-    // CODELAB: Register service worker.
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('load', () => {
-        navigator.serviceWorker.register('/service-worker.js')
-          .then((reg) => {
-            console.log('Service worker registered.', reg);
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.4.0/clipboard.min.js"></script>
+    <script src="/scripts/luxon-1.11.4.js"></script>
+    <script src="/scripts/app.js"></script>
+    <!-- CODELAB: Add the install script here -->
+    <script src="/scripts/install.js"></script>
+    <script>
+      // CODELAB: Register service worker.
+      if ("serviceWorker" in navigator) {
+        window.addEventListener("load", () => {
+          navigator.serviceWorker.register("/service-worker.js").then(reg => {
+            console.log("Service worker registered.", reg);
           });
-      });
-    }
-  </script>
-
-</body>
+        });
+      }
+    </script>
+  </body>
 </html>

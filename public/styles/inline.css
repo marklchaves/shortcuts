@@ -442,6 +442,38 @@ h2 {
   color: #666;
 }
 
+/* Shortcuts Form Styles */
+
+label {
+  display: inline-block;
+  margin: 0.5em 0;
+}
+
+#name, #url {
+  max-width: 60%;
+}
+
+input[id^="copy-link"] {
+  width: 60%;
+}
+
+label > span {
+    text-align: right;
+    display: inline-block;
+    width: 3em;
+}
+
+/* The default border isn't respecting mobile widths. */
+.fieldset {
+ border: none; /* Disable */
+}
+
+/* Replacement border for misbehaving fieldset. */
+.form-wrapper {
+  border: 1px solid white;
+  padding: 0.5em 0;
+}
+
 /**
  * Media query to adjust size of content for small screens
  */
