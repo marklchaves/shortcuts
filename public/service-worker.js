@@ -30,21 +30,8 @@ const FILES_TO_CACHE = [
   "/scripts/luxon-1.11.4.js",
   "/styles/inline.css",
   "/images/add.svg",
-  "/images/clear-day.svg",
-  "/images/clear-night.svg",
-  "/images/cloudy.svg",
-  "/images/fog.svg",
-  "/images/hail.svg",
   "/images/install.svg",
-  "/images/partly-cloudy-day.svg",
-  "/images/partly-cloudy-night.svg",
-  "/images/rain.svg",
-  "/images/refresh.svg",
-  "/images/sleet.svg",
-  "/images/snow.svg",
-  "/images/thunderstorm.svg",
-  "/images/tornado.svg",
-  "/images/wind.svg"
+  "/images/refresh.svg"
 ];
 
 self.addEventListener("install", evt => {
