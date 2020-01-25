@@ -39,7 +39,7 @@ html {
 body {
   align-content: stretch;
   align-items: stretch;
-  background: #1b2032; /* dark blue */
+  background: #111111; /* light black */
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
@@ -48,13 +48,14 @@ body {
 
 /* Links */
 a {
-  color: #f8b526;
+  color: #F05E35; /* deep orange */
   text-decoration: none;
   border-bottom: 3px solid;
 }
 
 a:hover {
-  color: #99CC33;
+  color: #F05E35;
+  opacity: 0.75;
 }
 
 /**
@@ -64,7 +65,7 @@ a:hover {
 .header {
   align-content: center;
   align-items: stretch;
-  background: #1b2032; /* Originally #3f51b5 */
+  background: #000000; /* Originally #3f51b5 */
   box-shadow:
     0 4px 5px 0 rgba(0, 0, 0, 0.14),
     0 2px 9px 1px rgba(0, 0, 0, 0.12),
@@ -440,6 +441,38 @@ h2 {
 
 .weather-card .future .oneday .temp-low {
   color: #666;
+}
+
+/* Shortcuts Form Styles */
+
+label {
+  display: inline-block;
+  margin: 0.5em 0;
+}
+
+#name, #url {
+  max-width: 60%;
+}
+
+input[id^="copy-link"] {
+  width: 60%;
+}
+
+label > span {
+    text-align: right;
+    display: inline-block;
+    width: 3em;
+}
+
+/* The default border isn't respecting mobile widths. */
+.fieldset {
+ border: none; /* Disable */
+}
+
+/* Replacement border for misbehaving fieldset. */
+.form-wrapper {
+  border: 1px solid white;
+  padding: 0.5em 0;
 }
 
 /**
