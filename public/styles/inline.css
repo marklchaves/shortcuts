@@ -23,7 +23,7 @@
 html,
 body {
   color: #fff;
-  font-family: 'Helvetica Neue', 'Helvetica', 'Verdana', sans-serif;
+  font-family: "Helvetica Neue", "Helvetica", "Verdana", sans-serif;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   height: 100%;
@@ -66,9 +66,7 @@ a:hover {
   align-content: center;
   align-items: stretch;
   background: #000000; /* Originally #3f51b5 */
-  box-shadow:
-    0 4px 5px 0 rgba(0, 0, 0, 0.14),
-    0 2px 9px 1px rgba(0, 0, 0, 0.12),
+  box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 2px 9px 1px rgba(0, 0, 0, 0.12),
     0 4px 2px -2px rgba(0, 0, 0, 0.2);
   color: #fff;
   display: flex;
@@ -110,11 +108,11 @@ h2 {
 }
 
 .header #butRefresh {
-  background: url(/images/refresh.svg) center center no-repeat;
+  background: url(/images/refresh.svg)centercenterno-repeat;
 }
 
 .header #butInstall {
-  background: url(/images/install.svg) center center no-repeat;
+  background: url(/images/install.svg)centercenterno-repeat;
 }
 
 .header .powered-by {
@@ -144,7 +142,8 @@ h2 {
 }
 
 .card-spinner svg circle {
-  animation: line 1.6s cubic-bezier(0.4, 0, 0.2, 1) infinite, rotate 1.6s linear infinite;
+  animation: line 1.6s cubic-bezier(0.4, 0, 0.2, 1) infinite,
+    rotate 1.6s linear infinite;
   box-sizing: border-box;
   stroke: #3f51b5;
   stroke-width: 3px;
@@ -152,8 +151,12 @@ h2 {
 }
 
 @keyframes rotate {
-  from { transform: rotate(0); }
-  to { transform: rotate(450deg); }
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(450deg);
+  }
 }
 
 @keyframes line {
@@ -185,11 +188,32 @@ h2 {
   text-transform: uppercase;
   cursor: pointer;
   border-radius: 2px;
+  margin-right: 0.25em;
 }
 
-.copy-button:hover{
+.copy-button:hover {
   background: #fff;
   color: #006699;
+}
+
+.justify-right {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.button-set {
+  max-width: 25rem;
+  padding: 3% 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.left-set {
+  grid-column: 1 / 2;
+}
+
+.right-set {
+  grid-column: 2 / 3;
 }
 
 /**
@@ -312,9 +336,7 @@ h2 {
   background: #000;
   color: #fff;
   border-radius: 2px;
-  box-shadow:
-    0 0 14px rgba(0, 0, 0, 0.24),
-    0 14px 28px rgba(0, 0, 0, 0.48);
+  box-shadow: 0 0 14px rgba(0, 0, 0, 0.24), 0 14px 28px rgba(0, 0, 0, 0.48);
   left: 50%;
   min-width: 280px;
   position: absolute;
@@ -361,11 +383,9 @@ h2 {
  */
 
 .weather-card {
-  background: #006699;
+  background: #25272A;
   border-radius: 2px;
-  box-shadow:
-    0 2px 2px 0 rgba(0, 0, 0, 0.14),
-    0 3px 1px -2px rgba(0, 0, 0, 0.2),
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2),
     0 1px 5px 0 rgba(0, 0, 0, 0.12);
   box-sizing: border-box;
   margin: 16px;
@@ -450,7 +470,8 @@ label {
   margin: 0.5em 0;
 }
 
-#name, #url {
+#name,
+#url {
   max-width: 60%;
 }
 
@@ -459,19 +480,20 @@ input[id^="copy-link"] {
 }
 
 label > span {
-    text-align: right;
-    display: inline-block;
-    width: 3em;
+  text-align: right;
+  display: inline-block;
+  width: 3em;
 }
 
 /* The default border isn't respecting mobile widths. */
 .fieldset {
- border: none; /* Disable */
+  border: none; /* Disable */
 }
 
 /* Replacement border for misbehaving fieldset. */
 .form-wrapper {
   border: 1px solid white;
+  border-radius: 5px;
   padding: 0.5em 0;
 }
 
