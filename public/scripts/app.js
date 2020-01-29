@@ -89,22 +89,16 @@ class ShortcutManager {
 
   /*
 	addTestData() {
-		var c1 = new Contact("Jimi Hendrix", "jimi@rip.com");
-  		var c2 = new Contact("Robert Fripp", "robert.fripp@kingcrimson.com");
-  		var c3 = new Contact("Angus Young", "angus@acdc.com");
-  		var c4 = new Contact("Arnold Schwarzenneger", "T2@terminator.com");
+		var sh1 = new Shortcut("cme dev", "https://caughtmyeye.dev");
 		
-		this.add(c1);
-		this.add(c2);
-		this.add(c3);
-		this.add(c4);
+		this.add(sh1);
 		
-		// Let's sort the list of contacts by Name
+		// Let's sort the list of shortcuts by Name
 		this.sort();
 	}
   */
 
-  // Will erase all contacts
+  // Will erase all shortcuts
   empty() {
     this.listOfShorties = [];
   }
@@ -127,10 +121,19 @@ class ShortcutManager {
       }
     }
   }
+  
+  delete(idx) {
+    let itemIdx = parseInt(idx) - 1;
+    console.log("Deleting idx = " + itemIdx);
+    this.listOfShorties.splice(itemIdx, 1);
+    this.sort();
+    this.save();
+    this.displayShortcuts("shortcuts");
+  }
 
   sort() {
     // As our array contains objects, we need to pass as argument
-    // a method that can compare two contacts.
+    // a method that can compare two shortcuts.
     // we use for that a class method, similar to the distance(p1, p2)
     // method we saw in the ES6 Point class in module 4
     // We always call such methods using the name of the class followed
@@ -138,34 +141,35 @@ class ShortcutManager {
     this.listOfShorties.sort(ShortcutManager.compareByName);
   }
 
-  // class method for comparing two contacts by name
-  static compareByName(c1, c2) {
+  // class method for comparing two shorties by name
+  static compareByName(s1, s2) {
     // JavaScript has builtin capabilities for comparing strings
     // in alphabetical order
-    if (c1.name < c2.name) return -1;
+    if (s1.name < s2.name) return -1;
 
-    if (c1.name > c2.name) return 1;
+    if (s1.name > s2.name) return 1;
 
     return 0;
   }
 
   printContactsToConsole() {
-    this.listOfShorties.forEach(function(c) {
-      console.log(c.name);
+    this.listOfShorties.forEach(function(sh) {
+      console.log(sh.name);
     });
   }
 
   load() {
     if (localStorage.contacts !== undefined) {
-      // the array of contacts is saved in JSON, let's convert
+      // the array of shortcuts is saved in JSON, let's convert
       // it back to a real JavaScript object.
+      // TO DO: change name to shortcuts
       this.listOfShorties = JSON.parse(localStorage.contacts);
     }
   }
 
   save() {
     // We can only save strings in local Storage. So, let's convert
-    // ou array of contacts to JSON
+    // ou array of shortcuts to JSON
     localStorage.contacts = JSON.stringify(this.listOfShorties);
   }
 
@@ -173,8 +177,8 @@ class ShortcutManager {
     // Find the edited shorty and save it.
     let newUrl = document.querySelector("#copy-link" + idx);
     let itemIdx = parseInt(idx) - 1;
-    this.listOfShorties[itemIdx] = newUrl.value;
-    console.log("Updated list of shorties: " + this.listOfShorties[itemIdx]);
+    this.listOfShorties[itemIdx].url = newUrl.value;
+    localStorage.contacts = JSON.stringify(this.listOfShorties);
   }
   
   displayShortcuts(sContainer) {
@@ -192,19 +196,19 @@ class ShortcutManager {
     var card = "";
     var idx = 0;
 
-    // iterate on the array of users
+    // iterate on the array of shortcuts
     this.listOfShorties.forEach(function(currentShortcut) {
-      /* row.innerHTML = "<td>" + currentContact.name + "</td>"
-							+ "<td>" + currentContact.email + "</td>" */
-
       card +=
         '\n\n<div class="weather-card">' +
         "<p>" +
-        currentShortcut.name +
+        currentShortcut.name + 
+        '&nbsp;<button id="del-button' + ++idx + '"' + 
+        'onclick="cm.delete(' + idx + ');" ' +
+        'class="std-button">X</button>' +
         "</p>" +
         '<div class="copy-card">' +
         '<input id="copy-link' +
-        ++idx +
+        idx +
         '" ' +
         'value="' +
         currentShortcut.url +
