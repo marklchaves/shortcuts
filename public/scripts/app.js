@@ -48,7 +48,7 @@ function formSubmitted() {
 
   // Empty the input fields
   name.value = "";
-  url.value = "";
+  url.value = "https://";
 
   // refresh the html table
   cm.displayShortcuts("shortcuts");
@@ -111,6 +111,8 @@ class ShortcutManager {
 
   add(shortcut) {
     this.listOfShorties.push(shortcut);
+    this.sort();
+    this.save();
   }
 
   remove(shortcut) {
@@ -167,6 +169,14 @@ class ShortcutManager {
     localStorage.contacts = JSON.stringify(this.listOfShorties);
   }
 
+  edSaveShorty(idx) {
+    // Find the edited shorty and save it.
+    let newUrl = document.querySelector("#copy-link" + idx);
+    let itemIdx = parseInt(idx) - 1;
+    this.listOfShorties[itemIdx] = newUrl.value;
+    console.log("Updated list of shorties: " + this.listOfShorties[itemIdx]);
+  }
+  
   displayShortcuts(sContainer) {
     // empty the container that contains the results
     let container = document.querySelector("#" + sContainer);
@@ -199,7 +209,7 @@ class ShortcutManager {
         'value="' +
         currentShortcut.url +
         '"' +
-        "readonly>" +
+        "onchange='cm.edSaveShorty(" + idx + ");'>" +
         "&nbsp;&nbsp;" +
         '<button id="copy-button' +
         idx +
@@ -215,36 +225,9 @@ class ShortcutManager {
     // adds the table to the div
     container.innerHTML += card;
 
+    /*
     console.log("card = " + card);
+    */
   }
 
-  /*
-  	displayContactsAsATable(idOfContainer) {
-		// empty the container that contains the results
-    	let container = document.querySelector("#" + idOfContainer);
-    	container.innerHTML = "";
-
-		
-		if(this.listOfShorties.length === 0) {
-			container.innerHTML = "<p>No contacts to display!</p>";
-			// stop the execution of this method
-			return;
-		}  
-  
-    	// creates and populate the table with users
-    	var table = document.createElement("table");
-          
-    	// iterate on the array of users
-    	this.listOfShorties.forEach(function(currentContact) {
-        	// creates a row
-        	var row = table.insertRow();
-        
-			row.innerHTML = "<td>" + currentContact.name + "</td>"
-							+ "<td>" + currentContact.email + "</td>"
-     	});
-  
-     	// adds the table to the div
-     	container.appendChild(table);
-  	}
-    */
 }

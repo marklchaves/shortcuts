@@ -180,7 +180,7 @@ h2 {
 /**
  *
  */
-.copy-button {
+.std-button, .copy-button {
   background: transparent;
   color: #fff;
   border: 1px solid;
@@ -189,9 +189,10 @@ h2 {
   cursor: pointer;
   border-radius: 2px;
   margin-right: 0.25em;
+  margin-top: 0.25em;
 }
 
-.copy-button:hover {
+.std-button:hover {
   background: #fff;
   color: #006699;
 }
@@ -472,11 +473,11 @@ label {
 
 #name,
 #url {
-  max-width: 60%;
+  max-width: 55%;
 }
 
 input[id^="copy-link"] {
-  width: 60%;
+  width: 55%;
 }
 
 label > span {
