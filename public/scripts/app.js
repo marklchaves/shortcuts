@@ -174,9 +174,12 @@ class ShortcutManager {
   }
 
   edSaveShorty(idx) {
-    // Find the edited shorty and save it.
+    let newName = document.querySelector("#shorty-name" + idx);
+    //if (newName === '') return;
     let newUrl = document.querySelector("#copy-link" + idx);
+    //if (newUrl === '') return;
     let itemIdx = parseInt(idx) - 1;
+    this.listOfShorties[itemIdx].name = newName.value;
     this.listOfShorties[itemIdx].url = newUrl.value;
     localStorage.contacts = JSON.stringify(this.listOfShorties);
   }
@@ -200,12 +203,13 @@ class ShortcutManager {
     this.listOfShorties.forEach(function(currentShortcut) {
       card +=
         '\n\n<div class="weather-card">' +
-        "<p>" +
+        "<input id='shorty-name" + ++idx + "' type='text' value='" +
         currentShortcut.name + 
-        '&nbsp;<button id="del-button' + ++idx + '"' + 
+        "' onchange='cm.edSaveShorty(" + idx + ");' " +
+        "title='Edit' required>" + 
+        '&nbsp;<button id="del-button' + idx + '"' + 
         'onclick="cm.delete(' + idx + ');" ' +
-        'class="std-button">X</button>' +
-        "</p>" +
+        'class="std-button" title="Delete Shorty">X</button>' +
         '<div class="copy-card">' +
         '<input id="copy-link' +
         idx +
@@ -213,7 +217,7 @@ class ShortcutManager {
         'value="' +
         currentShortcut.url +
         '"' +
-        "onchange='cm.edSaveShorty(" + idx + ");'>" +
+        "onchange='cm.edSaveShorty(" + idx + ");' title='Edit Shorty' type='url' required>" +
         "&nbsp;&nbsp;" +
         '<button id="copy-button' +
         idx +
@@ -222,7 +226,7 @@ class ShortcutManager {
         'class="copy-button" ' +
         'data-clipboard-target="#copy-link' +
         idx +
-        '">Copy</button>' +
+        '" title="Copy to Clipboard">Copy</button>' +
         "</div></div>";
     });
 
