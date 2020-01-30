@@ -478,6 +478,7 @@ label {
 
 input[id^="copy-link"] {
   width: 55%;
+  margin-top: 1.25em;
 }
 
 label > span {
