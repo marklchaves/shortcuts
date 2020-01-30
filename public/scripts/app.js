@@ -1,6 +1,6 @@
 /*
  * @license
- * Your First PWA Codelab (https://g.co/codelabs/pwa)
+ * Based on Your First PWA Codelab (https://g.co/codelabs/pwa)
  * Copyright 2019 Google Inc. All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -175,9 +175,15 @@ class ShortcutManager {
 
   edSaveShorty(idx) {
     let newName = document.querySelector("#shorty-name" + idx);
-    //if (newName === '') return;
+    if (newName.value.trim() === '') {
+      alert('Please name me.');
+      return;
+    }
     let newUrl = document.querySelector("#copy-link" + idx);
-    //if (newUrl === '') return;
+    if (newUrl.value.trim() === '') {
+      alert('Can\'t have a blank URL.');
+      return;
+    }
     let itemIdx = parseInt(idx) - 1;
     this.listOfShorties[itemIdx].name = newName.value;
     this.listOfShorties[itemIdx].url = newUrl.value;
@@ -200,16 +206,17 @@ class ShortcutManager {
     var idx = 0;
 
     // iterate on the array of shortcuts
+    // To do: Add confirmation modal for delete.
     this.listOfShorties.forEach(function(currentShortcut) {
       card +=
         '\n\n<div class="weather-card">' +
         "<input id='shorty-name" + ++idx + "' type='text' value='" +
         currentShortcut.name + 
         "' onchange='cm.edSaveShorty(" + idx + ");' " +
-        "title='Edit' required>" + 
+        "title='Edit Shorty Name' required>" + 
         '&nbsp;<button id="del-button' + idx + '"' + 
         'onclick="cm.delete(' + idx + ');" ' +
-        'class="std-button" title="Delete Shorty">X</button>' +
+        'class="std-button del-button" title="Delete Shorty">&times;</button>' +
         '<div class="copy-card">' +
         '<input id="copy-link' +
         idx +
@@ -217,8 +224,8 @@ class ShortcutManager {
         'value="' +
         currentShortcut.url +
         '"' +
-        "onchange='cm.edSaveShorty(" + idx + ");' title='Edit Shorty' type='url' required>" +
-        "&nbsp;&nbsp;" +
+        "onchange='cm.edSaveShorty(" + idx + ");' title='Edit Shorty Link' type='url' required>" +
+        "&nbsp;" +
         '<button id="copy-button' +
         idx +
         '" ' +

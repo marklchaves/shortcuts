@@ -1,6 +1,6 @@
 /*
  * @license
- * Your First PWA Codelab (https://g.co/codelabs/pwa)
+ * Based on Your First PWA Codelab (https://g.co/codelabs/pwa)
  * Copyright 2019 Google Inc. All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -24,6 +24,7 @@ html,
 body {
   color: #fff;
   font-family: "Helvetica Neue", "Helvetica", "Verdana", sans-serif;
+  font-size: 14px;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   height: 100%;
@@ -184,7 +185,7 @@ h2 {
   background: transparent;
   color: #fff;
   border: 1px solid;
-  font-size: 14px;
+  font-size: 1rem;
   text-transform: uppercase;
   cursor: pointer;
   border-radius: 2px;
@@ -195,6 +196,10 @@ h2 {
 .std-button:hover {
   background: #fff;
   color: #006699;
+}
+
+.del-button, .copy-button {
+  font-size: 1em;
 }
 
 .justify-right {
@@ -375,7 +380,7 @@ h2 {
   background: transparent;
   color: #fff;
   border: none;
-  font-size: 14px;
+  font-size: 1rem;
   text-transform: uppercase;
 }
 
@@ -477,7 +482,7 @@ label {
 }
 
 input[id^="copy-link"] {
-  width: 55%;
+  width: 65%;
   margin-top: 1.25em;
 }
 
