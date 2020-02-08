@@ -87,7 +87,15 @@
 
       <div class="weather-card">
         <h2>List of Shorties</h2>
-
+        <label id="toggle-btn" for="ed-toggle" class="switch">
+          <input class="slider-input"
+            id="ed-toggle"
+            type="checkbox"
+            onclick="toggle('ed-toggle')"
+            value="1"
+          />
+          <span class="slider round"></span>
+        </label>
         <div id="shortcuts"></div>
       </div>
     </main>

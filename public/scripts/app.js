@@ -37,6 +37,36 @@ function init() {
   //cm.displayShortcuts("shortcuts");
 
   loadList();
+  
+  makeReadOnly('shorty-name');
+  makeReadOnly('copy-link');
+}
+
+// Make all the input fields read-only when the page is loaded.
+// To do: Change background color for read-only.
+function makeReadOnly(toggleID) {
+  for (let i = 1; i <= cm.listOfShorties.length; i++) {
+    document.querySelector(
+      "input[id=" + toggleID + i + "]"
+    ).readOnly = true;
+  }
+}
+
+// Handle the toggling between edit and read-only.
+// To do: Change background color for read-only.
+function toggle(checkboxID) {
+  let checkbox = document.getElementById(checkboxID);
+  let toggle;
+  let toggleID = 'shorty-name';
+  for (let i = 1; i <= cm.listOfShorties.length; i++) {
+    toggle = document.getElementById(toggleID + i);
+    let updateToggle = checkbox.checked ? (toggle.readOnly = false) : (toggle.readOnly = true);
+  }
+  toggleID = 'copy-link';
+  for (let i = 1; i <= cm.listOfShorties.length; i++) {
+    toggle = document.getElementById(toggleID + i);
+    let updateToggle = checkbox.checked ? (toggle.readOnly = false) : (toggle.readOnly = true);
+  }
 }
 
 function formSubmitted() {
@@ -45,6 +75,10 @@ function formSubmitted() {
   let url = document.querySelector("#url");
   let newShortcut = new Shortcut(name.value, url.value);
   cm.add(newShortcut);
+  
+  // To do: Refactor so don't loop through all inputs for one add.
+  makeReadOnly('shorty-name');
+  makeReadOnly('copy-link');
 
   // Empty the input fields
   name.value = "";
@@ -209,7 +243,7 @@ class ShortcutManager {
     // To do: Add confirmation modal for delete.
     this.listOfShorties.forEach(function(currentShortcut) {
       card +=
-        '\n\n<div class="weather-card">' +
+        '\n\n<div id="shorties-list" class="weather-card">' +
         "<input id='shorty-name" + ++idx + "' type='text' value='" +
         currentShortcut.name + 
         "' onchange='cm.edSaveShorty(" + idx + ");' " +
