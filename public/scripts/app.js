@@ -53,6 +53,8 @@ function init() {
   //makeReadOnly("copy-link");
 }
 
+// To do: Make some of these static?
+
 // Make all the input fields read-only when the page is loaded.
 // To do: Change background color for read-only.
 function makeReadOnly(toggleID) {
@@ -122,12 +124,19 @@ function sort() {
 
 /* Added 20 Feb 2020 ~mlc */
 function searchShorties() {
-  const found = cm.listOfShorties.find(element => element.name === searchField.value);
+  // Display everything if nothing is entered.
+  if (searchField.value.trim() === "") {
+    cm.displayShortcuts("shortcuts");
+    return;
+  }
+  const found = cm.listOfShorties.find(
+    element => element.name === searchField.value
+  );
   if (found) {
     shortiesDiv.innerHTML =
-      '<input id="copy-link1" type="text" value="' + found.name + '" />';
+      cm.renderShortcut(0, found);
   } else {
-    shortiesDiv.innerHTML = '<h2>Not Found</h2>';
+    shortiesDiv.innerHTML = "<h2 style='text-align: center;'>Not Found</h2>";
   }
 }
 
@@ -138,6 +147,9 @@ class Shortcut {
   }
 }
 
+/**
+ * || Class
+ */
 class ShortcutManager {
   constructor() {
     // when we build the shortcut manager, it
@@ -146,14 +158,16 @@ class ShortcutManager {
   }
 
   /* TEST */
-	addTestData() {
-		var sh1 = new Shortcut("cme dev", "https://caughtmyeye.dev");
-		
-		this.add(sh1);
-		
-		// Let's sort the list of shortcuts by Name
-		this.sort();
-	}
+  addTestData() {
+    var sh = new Shortcut("cme dev", "https://caughtmyeye.dev");
+    this.add(sh);
+
+    sh = new Shortcut("cme webdev", "https://caughtmyeye.dev/webdev/");
+    this.add(sh);
+
+    // Let's sort the list of shortcuts by Name
+    this.sort();
+  }
 
   // Will erase all shortcuts
   empty() {
@@ -247,6 +261,52 @@ class ShortcutManager {
     localStorage.contacts = JSON.stringify(this.listOfShorties);
   }
 
+  // Render one shortcut.
+  renderShortcut(idx, sc) {
+
+    let card = 
+      '\n\n<div id="shorties-list" class="weather-card">' +
+      "<input id='shorty-name" +
+      ++idx +
+      "' type='text' value='" +
+      sc.name +
+      "' onchange='cm.edSaveShorty(" +
+      idx +
+      ");' " +
+      "title='Edit Shorty Name' required>" +
+      '&nbsp;<button id="del-button' +
+      idx +
+      '"' +
+      'onclick="cm.delete(' +
+      idx +
+      ');" ' +
+      'class="std-button del-button" title="Delete Shorty">&times;</button>' +
+      '<div class="copy-card">' +
+      '<input id="copy-link' +
+      idx +
+      '" ' +
+      'value="' +
+      sc.url +
+      '"' +
+      "onchange='cm.edSaveShorty(" +
+      idx +
+      ");' title='Edit Shorty Link' type='url' required>" +
+      "&nbsp;" +
+      '<button id="copy-button' +
+      idx +
+      '" ' +
+      "onclick=\"alert('Copied')\" " +
+      'class="copy-button" ' +
+      'data-clipboard-target="#copy-link' +
+      idx +
+      '" title="Copy to Clipboard">Copy</button>' +
+      "</div></div>";
+
+    return card;
+
+  }
+
+  // To do: Refactor to be reusable. Maybe public static.
   displayShortcuts(sContainer) {
     // empty the container that contains the results
     let container = document.querySelector("#" + sContainer);
@@ -264,45 +324,10 @@ class ShortcutManager {
 
     // iterate on the array of shortcuts
     // To do: Add confirmation modal for delete.
-    this.listOfShorties.forEach(function(currentShortcut) {
-      card +=
-        '\n\n<div id="shorties-list" class="weather-card">' +
-        "<input id='shorty-name" +
-        ++idx +
-        "' type='text' value='" +
-        currentShortcut.name +
-        "' onchange='cm.edSaveShorty(" +
-        idx +
-        ");' " +
-        "title='Edit Shorty Name' required>" +
-        '&nbsp;<button id="del-button' +
-        idx +
-        '"' +
-        'onclick="cm.delete(' +
-        idx +
-        ');" ' +
-        'class="std-button del-button" title="Delete Shorty">&times;</button>' +
-        '<div class="copy-card">' +
-        '<input id="copy-link' +
-        idx +
-        '" ' +
-        'value="' +
-        currentShortcut.url +
-        '"' +
-        "onchange='cm.edSaveShorty(" +
-        idx +
-        ");' title='Edit Shorty Link' type='url' required>" +
-        "&nbsp;" +
-        '<button id="copy-button' +
-        idx +
-        '" ' +
-        "onclick=\"alert('Copied')\" " +
-        'class="copy-button" ' +
-        'data-clipboard-target="#copy-link' +
-        idx +
-        '" title="Copy to Clipboard">Copy</button>' +
-        "</div></div>";
-    });
+
+    for (let i = 0; i < this.listOfShorties.length; i++) {
+      card += this.renderShortcut(idx, this.listOfShorties[i]);
+    }
 
     // adds the table to the div
     container.innerHTML += card;
