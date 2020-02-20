@@ -85,10 +85,26 @@
         </div>
       </div>
 
+      <div id="search-box" class="weather-card">
+        <div id="search-wrapper" class="column-half">
+          <fieldset>
+            <legend>Search</legend>
+            <input
+              id="searchField"
+              type="text"
+              value=""
+              onChange="searchShorties()"
+              placeholder="Search shorties"
+            />
+          </fieldset>
+        </div>
+      </div>
+
       <div class="weather-card">
         <h2>List of Shorties</h2>
         <label id="toggle-btn" for="ed-toggle" class="switch">
-          <input class="slider-input"
+          <input
+            class="slider-input"
             id="ed-toggle"
             type="checkbox"
             onclick="toggle('ed-toggle')"

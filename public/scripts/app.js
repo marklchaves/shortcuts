@@ -26,6 +26,9 @@ window.onload = init;
 // The shortcut manager as a global variable
 let cm;
 
+let searchField;
+let shortiesDiv;
+
 function init() {
   // create an instance of the contact manager
   cm = new ShortcutManager();
@@ -36,19 +39,25 @@ function init() {
   // Display shorties
   //cm.displayShortcuts("shortcuts");
 
+  // Search
+  searchField = document.querySelector("#searchField");
+  shortiesDiv = document.querySelector("#shortcuts");
+
+  // TEST
+  cm.addTestData();
+
   loadList();
-  
-  makeReadOnly('shorty-name');
-  makeReadOnly('copy-link');
+
+  // Stub out if testing.
+  //makeReadOnly("shorty-name");
+  //makeReadOnly("copy-link");
 }
 
 // Make all the input fields read-only when the page is loaded.
 // To do: Change background color for read-only.
 function makeReadOnly(toggleID) {
   for (let i = 1; i <= cm.listOfShorties.length; i++) {
-    document.querySelector(
-      "input[id=" + toggleID + i + "]"
-    ).readOnly = true;
+    document.querySelector("input[id=" + toggleID + i + "]").readOnly = true;
   }
 }
 
@@ -57,15 +66,19 @@ function makeReadOnly(toggleID) {
 function toggle(checkboxID) {
   let checkbox = document.getElementById(checkboxID);
   let toggle;
-  let toggleID = 'shorty-name';
+  let toggleID = "shorty-name";
   for (let i = 1; i <= cm.listOfShorties.length; i++) {
     toggle = document.getElementById(toggleID + i);
-    let updateToggle = checkbox.checked ? (toggle.readOnly = false) : (toggle.readOnly = true);
+    let updateToggle = checkbox.checked
+      ? (toggle.readOnly = false)
+      : (toggle.readOnly = true);
   }
-  toggleID = 'copy-link';
+  toggleID = "copy-link";
   for (let i = 1; i <= cm.listOfShorties.length; i++) {
     toggle = document.getElementById(toggleID + i);
-    let updateToggle = checkbox.checked ? (toggle.readOnly = false) : (toggle.readOnly = true);
+    let updateToggle = checkbox.checked
+      ? (toggle.readOnly = false)
+      : (toggle.readOnly = true);
   }
 }
 
@@ -75,10 +88,10 @@ function formSubmitted() {
   let url = document.querySelector("#url");
   let newShortcut = new Shortcut(name.value, url.value);
   cm.add(newShortcut);
-  
+
   // To do: Refactor so don't loop through all inputs for one add.
-  makeReadOnly('shorty-name');
-  makeReadOnly('copy-link');
+  makeReadOnly("shorty-name");
+  makeReadOnly("copy-link");
 
   // Empty the input fields
   name.value = "";
@@ -107,6 +120,17 @@ function sort() {
   cm.displayShortcuts("shortcuts");
 }
 
+/* Added 20 Feb 2020 ~mlc */
+function searchShorties() {
+  const found = cm.listOfShorties.find(element => element.name === searchField.value);
+  if (found) {
+    shortiesDiv.innerHTML =
+      '<input id="copy-link1" type="text" value="' + found.name + '" />';
+  } else {
+    shortiesDiv.innerHTML = '<h2>Not Found</h2>';
+  }
+}
+
 class Shortcut {
   constructor(name, url) {
     this.name = name;
@@ -121,7 +145,7 @@ class ShortcutManager {
     this.listOfShorties = [];
   }
 
-  /*
+  /* TEST */
 	addTestData() {
 		var sh1 = new Shortcut("cme dev", "https://caughtmyeye.dev");
 		
@@ -130,7 +154,6 @@ class ShortcutManager {
 		// Let's sort the list of shortcuts by Name
 		this.sort();
 	}
-  */
 
   // Will erase all shortcuts
   empty() {
@@ -155,7 +178,7 @@ class ShortcutManager {
       }
     }
   }
-  
+
   delete(idx) {
     let itemIdx = parseInt(idx) - 1;
     console.log("Deleting idx = " + itemIdx);
@@ -209,13 +232,13 @@ class ShortcutManager {
 
   edSaveShorty(idx) {
     let newName = document.querySelector("#shorty-name" + idx);
-    if (newName.value.trim() === '') {
-      alert('Please name me.');
+    if (newName.value.trim() === "") {
+      alert("Please name me.");
       return;
     }
     let newUrl = document.querySelector("#copy-link" + idx);
-    if (newUrl.value.trim() === '') {
-      alert('Can\'t have a blank URL.');
+    if (newUrl.value.trim() === "") {
+      alert("Can't have a blank URL.");
       return;
     }
     let itemIdx = parseInt(idx) - 1;
@@ -223,7 +246,7 @@ class ShortcutManager {
     this.listOfShorties[itemIdx].url = newUrl.value;
     localStorage.contacts = JSON.stringify(this.listOfShorties);
   }
-  
+
   displayShortcuts(sContainer) {
     // empty the container that contains the results
     let container = document.querySelector("#" + sContainer);
@@ -244,12 +267,20 @@ class ShortcutManager {
     this.listOfShorties.forEach(function(currentShortcut) {
       card +=
         '\n\n<div id="shorties-list" class="weather-card">' +
-        "<input id='shorty-name" + ++idx + "' type='text' value='" +
-        currentShortcut.name + 
-        "' onchange='cm.edSaveShorty(" + idx + ");' " +
-        "title='Edit Shorty Name' required>" + 
-        '&nbsp;<button id="del-button' + idx + '"' + 
-        'onclick="cm.delete(' + idx + ');" ' +
+        "<input id='shorty-name" +
+        ++idx +
+        "' type='text' value='" +
+        currentShortcut.name +
+        "' onchange='cm.edSaveShorty(" +
+        idx +
+        ");' " +
+        "title='Edit Shorty Name' required>" +
+        '&nbsp;<button id="del-button' +
+        idx +
+        '"' +
+        'onclick="cm.delete(' +
+        idx +
+        ');" ' +
         'class="std-button del-button" title="Delete Shorty">&times;</button>' +
         '<div class="copy-card">' +
         '<input id="copy-link' +
@@ -258,7 +289,9 @@ class ShortcutManager {
         'value="' +
         currentShortcut.url +
         '"' +
-        "onchange='cm.edSaveShorty(" + idx + ");' title='Edit Shorty Link' type='url' required>" +
+        "onchange='cm.edSaveShorty(" +
+        idx +
+        ");' title='Edit Shorty Link' type='url' required>" +
         "&nbsp;" +
         '<button id="copy-button' +
         idx +
@@ -278,5 +311,4 @@ class ShortcutManager {
     console.log("card = " + card);
     */
   }
-
 }
