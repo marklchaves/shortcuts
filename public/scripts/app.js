@@ -33,24 +33,22 @@ function init() {
   // create an instance of the contact manager
   cm = new ShortcutManager();
 
+  // TEST
   // cm.addTestData();
-  cm.printContactsToConsole();
+  // cm.printContactsToConsole();
 
-  // Display shorties
-  //cm.displayShortcuts("shortcuts");
+  // Display shorties - stub out if testing
+  cm.displayShortcuts("shortcuts");
 
   // Search
   searchField = document.querySelector("#searchField");
   shortiesDiv = document.querySelector("#shortcuts");
 
-  // TEST
-  cm.addTestData();
-
   loadList();
 
   // Stub out if testing.
-  //makeReadOnly("shorty-name");
-  //makeReadOnly("copy-link");
+  makeReadOnly("shorty-name");
+  makeReadOnly("copy-link");
 }
 
 // To do: Make some of these static?
