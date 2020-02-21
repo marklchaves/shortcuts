@@ -43,6 +43,10 @@ function init() {
   // Search
   searchField = document.querySelector("#searchField");
   shortiesDiv = document.querySelector("#shortcuts");
+  
+  // Event Listners
+  const expSh = document.getElementById("exportShorties");
+  expSh.addEventListener("click", exportToJsonFile, false);
 
   loadList();
 
@@ -138,6 +142,24 @@ function searchShorties() {
   }
 }
 
+/* Added 21 Feb 2020 ~mlc */
+function exportToJsonFile() {
+  let jsonData = cm.listOfShorties;
+  let dataStr = JSON.stringify(jsonData);
+  let dataUri =
+    "data:application/json;charset=utf-8," + encodeURIComponent(dataStr);
+
+  let exportFileDefaultName = "data.json";
+
+  let linkElement = document.createElement("a");
+  linkElement.setAttribute("href", dataUri);
+  linkElement.setAttribute("download", exportFileDefaultName);
+  linkElement.click();
+}
+
+/**
+ * || Class
+ */
 class Shortcut {
   constructor(name, url) {
     this.name = name;
