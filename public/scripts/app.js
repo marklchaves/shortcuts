@@ -43,6 +43,14 @@ function init() {
   // Search
   searchField = document.querySelector("#searchField");
   shortiesDiv = document.querySelector("#shortcuts");
+  
+  // Event Listners
+  const expSh = document.getElementById("exportShorties");
+  expSh.addEventListener("click", exportToJsonFile, false);
+  const impSh = document.getElementById("importShorties");
+  impSh.addEventListener("click", displayImportTextArea, false);
+  const impText = document.getElementById("importTextArea");
+  impText.addEventListener("change", importJsonFile, false);
 
   loadList();
 
@@ -138,6 +146,54 @@ function searchShorties() {
   }
 }
 
+/* Added 21 Feb 2020 ~mlc */
+function exportToJsonFile() {
+  let jsonData = cm.listOfShorties;
+  let dataStr = JSON.stringify(jsonData);
+  let dataUri =
+    "data:application/json;charset=utf-8," + encodeURIComponent(dataStr);
+
+  let exportFileDefaultName = "data.json";
+
+  let linkElement = document.createElement("a");
+  linkElement.setAttribute("href", dataUri);
+  linkElement.setAttribute("download", exportFileDefaultName);
+  linkElement.click();
+}
+
+/* Added 22 Feb 2020 ~mlc */
+function displayImportTextArea() {
+  const impText = document.getElementById("importTextArea");
+  impText.classList.toggle('hide-first');
+}
+
+/* Added 22 Feb 2020 ~mlc */
+function importJsonFile() {
+  let importedJSONText = document.getElementById("importTextArea").value;
+  let importedJSON;
+  if (importedJSONText.trim()) {
+    try {
+      importedJSON = JSON.parse(importedJSONText.trim());
+    } catch (e) {
+      alert(e);
+    }
+    if (importedJSON) {
+      cm.listOfShorties = importedJSON;
+      cm.sort();
+      cm.save();
+      cm.displayShortcuts("shortcuts");
+      alert("Imported " + Object.keys(importedJSON).length + " objects!");
+      console.log("Imported!");
+    }
+  } else {
+    alert("Nothing to import.");
+  }
+}
+
+
+/**
+ * || Class
+ */
 class Shortcut {
   constructor(name, url) {
     this.name = name;
