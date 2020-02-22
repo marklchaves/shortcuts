@@ -48,9 +48,9 @@ function init() {
   const expSh = document.getElementById("exportShorties");
   expSh.addEventListener("click", exportToJsonFile, false);
   const impSh = document.getElementById("importShorties");
-  impSh.addEventListener("click", displayImportTextArea, false);
-  const impText = document.getElementById("importTextArea");
-  impText.addEventListener("change", importJsonFile, false);
+  impSh.addEventListener("click", importJsonFile, false);
+  //const impText = document.getElementById("importTextArea");
+  //impText.addEventListener("change", importJsonFile, false);
 
   loadList();
 
