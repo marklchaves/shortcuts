@@ -136,7 +136,7 @@ function searchShorties() {
     return;
   }
   const found = cm.listOfShorties.find(
-    element => element.name === searchField.value
+    element => element.name === searchField.value.trim()
   );
   if (found) {
     shortiesDiv.innerHTML =
