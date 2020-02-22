@@ -81,6 +81,21 @@
                 <button class="std-button" title="Add">+</button>
               </label>
             </fieldset>
+            <fieldset class="fieldset">
+              <label for="importTextArea">
+                <legend>
+                  Import JSON
+                </legend>
+                <div>
+                  <textarea id="importTextArea" placeholder="Paste your JSON here." value="" rows="5" cols="50" ></textarea>
+                </div>
+                <div>
+                  <button id="importShorties" class="std-button">
+                    Import
+                  </button>
+                </div>
+              </label>
+            </fieldset>
           </form>
         </div>
       </div>
@@ -117,16 +132,6 @@
             <button id="exportShorties" class="std-button">
             Export
             </button>
-          </div>
-        </label>
-        <label>
-          <div>
-            <button id="importShorties" class="std-button">
-              Import
-            </button>
-          </div>
-          <div>
-            <textarea class="hide-first" id="importTextArea" placeholder="Paste your JSON here." value="" rows="5" cols="55" ></textarea>
           </div>
         </label>
         <div id="shortcuts"></div>
