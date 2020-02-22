@@ -47,6 +47,10 @@ function init() {
   // Event Listners
   const expSh = document.getElementById("exportShorties");
   expSh.addEventListener("click", exportToJsonFile, false);
+  const impSh = document.getElementById("importShorties");
+  impSh.addEventListener("click", displayImportTextArea, false);
+  const impText = document.getElementById("importTextArea");
+  impText.addEventListener("change", importJsonFile, false);
 
   loadList();
 
@@ -156,6 +160,36 @@ function exportToJsonFile() {
   linkElement.setAttribute("download", exportFileDefaultName);
   linkElement.click();
 }
+
+/* Added 22 Feb 2020 ~mlc */
+function displayImportTextArea() {
+  const impText = document.getElementById("importTextArea");
+  impText.classList.toggle('hide-first');
+}
+
+/* Added 22 Feb 2020 ~mlc */
+function importJsonFile() {
+  let importedJSONText = document.getElementById("importTextArea").value;
+  let importedJSON;
+  if (importedJSONText.trim()) {
+    try {
+      importedJSON = JSON.parse(importedJSONText.trim());
+    } catch (e) {
+      alert(e);
+    }
+    if (importedJSON) {
+      cm.listOfShorties = importedJSON;
+      cm.sort();
+      cm.save();
+      cm.displayShortcuts("shortcuts");
+      alert("Imported " + Object.keys(importedJSON).length + " objects!");
+      console.log("Imported!");
+    }
+  } else {
+    alert("Nothing to import.");
+  }
+}
+
 
 /**
  * || Class
