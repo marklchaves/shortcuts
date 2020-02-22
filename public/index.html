@@ -93,7 +93,7 @@
               id="searchField"
               type="text"
               value=""
-              onChange="searchShorties()"
+              onchange="searchShorties()"
               placeholder="Search shorties"
             />
           </fieldset>
@@ -113,11 +113,21 @@
           <span class="slider round"></span>
         </label>
         <label>
-          <span>
+          <div>
             <button id="exportShorties" class="std-button">
             Export
             </button>
-          </span>
+          </div>
+        </label>
+        <label>
+          <div>
+            <button id="importShorties" class="std-button">
+              Import
+            </button>
+          </div>
+          <div>
+            <textarea class="hide-first" id="importTextArea" placeholder="Paste your JSON here." value="" rows="5" cols="55" ></textarea>
+          </div>
         </label>
         <div id="shortcuts"></div>
       </div>
