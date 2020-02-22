@@ -588,9 +588,29 @@ label > span {
   line-height: 1.5;
 }
 
-/* */
+/**
+ * Import Styling
+ */
+
+/* No longer Needed? */
 .hide-first {
   display: none;
+}
+
+/* Mobile First Width */
+#import-label {
+  width: 100%;
+}
+
+@media screen and (min-width: 1024px) {
+  #import-label {
+    width: 60%;
+  }
+}
+
+textarea {
+  height: 5em;
+  width: 100%;
 }
 
 /**
