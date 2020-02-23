@@ -140,7 +140,7 @@ function searchShorties() {
   );
   if (found) {
     shortiesDiv.innerHTML =
-      cm.renderShortcut(0, found);
+      cm.renderShortcut(1, found);
   } else {
     shortiesDiv.innerHTML = "<h2 style='text-align: center;'>Not Found</h2>";
   }
@@ -162,12 +162,6 @@ function exportToJsonFile() {
 }
 
 /* Added 22 Feb 2020 ~mlc */
-function displayImportTextArea() {
-  const impText = document.getElementById("importTextArea");
-  impText.classList.toggle('hide-first');
-}
-
-/* Added 22 Feb 2020 ~mlc */
 function importJsonFile() {
   let importedJSONText = document.getElementById("importTextArea").value;
   let importedJSON;
@@ -184,6 +178,7 @@ function importJsonFile() {
       cm.displayShortcuts("shortcuts");
       alert("Imported " + Object.keys(importedJSON).length + " objects!");
       console.log("Imported!");
+      document.getElementById("importTextArea").value = '';
     }
   } else {
     alert("Nothing to import.");
@@ -313,15 +308,19 @@ class ShortcutManager {
     this.listOfShorties[itemIdx].name = newName.value;
     this.listOfShorties[itemIdx].url = newUrl.value;
     localStorage.contacts = JSON.stringify(this.listOfShorties);
+    this.sort();
+    this.displayShortcuts("shortcuts");
   }
 
   // Render one shortcut.
   renderShortcut(idx, sc) {
 
+    // console.log('idx = ' + idx);
+    
     let card = 
       '\n\n<div id="shorties-list" class="weather-card">' +
       "<input id='shorty-name" +
-      ++idx +
+      idx +
       "' type='text' value='" +
       sc.name +
       "' onchange='cm.edSaveShorty(" +
@@ -380,14 +379,13 @@ class ShortcutManager {
     // To do: Add confirmation modal for delete.
 
     for (let i = 0; i < this.listOfShorties.length; i++) {
-      card += this.renderShortcut(idx, this.listOfShorties[i]);
+      // console.log('displayShortcuts idx = ' + idx);
+      card += this.renderShortcut(++idx, this.listOfShorties[i]);
     }
 
     // adds the table to the div
     container.innerHTML += card;
 
-    /*
-    console.log("card = " + card);
-    */
+    // console.log("card = " + card);    
   }
 }
