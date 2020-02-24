@@ -146,6 +146,10 @@ function searchShorties() {
   if (found) {
     shortiesDiv.innerHTML =
       cm.renderShortcut(1, found);
+    document.querySelector("#shorty-name1").readOnly = true;
+    document.querySelector("#shorty-name1").classList.toggle('read-only'); 
+    document.querySelector("#copy-link1").readOnly = true;
+    document.querySelector("#copy-link1").classList.toggle('read-only'); 
   } else {
     shortiesDiv.innerHTML = "<h2 style='text-align: center;'>Not Found</h2>";
   }
