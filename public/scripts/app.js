@@ -106,6 +106,7 @@ function formSubmitted() {
   url.value = "https://";
 
   // refresh the html table
+  cm.sort();
   cm.displayShortcuts("shortcuts");
 
   // do not let your browser submit the form using HTTP
@@ -119,6 +120,7 @@ function emptyList() {
 
 function loadList() {
   cm.load();
+  cm.sort();
   cm.displayShortcuts("shortcuts");
 }
 
@@ -254,14 +256,10 @@ class ShortcutManager {
   sort() {
     // As our array contains objects, we need to pass as argument
     // a method that can compare two shortcuts.
-    // we use for that a class method, similar to the distance(p1, p2)
-    // method we saw in the ES6 Point class in module 4
-    // We always call such methods using the name of the class followed
-    // by the dot operator
     this.listOfShorties.sort(ShortcutManager.compareByName);
   }
 
-  // class method for comparing two shorties by name
+  // Class method for comparing two shorties by name.
   static compareByName(s1, s2) {
     // JavaScript has builtin capabilities for comparing strings
     // in alphabetical order
@@ -279,18 +277,18 @@ class ShortcutManager {
   }
 
   load() {
-    if (localStorage.contacts !== undefined) {
+    if (localStorage.shorties !== undefined) {
       // the array of shortcuts is saved in JSON, let's convert
       // it back to a real JavaScript object.
       // TO DO: change name to shortcuts
-      this.listOfShorties = JSON.parse(localStorage.contacts);
+      this.listOfShorties = JSON.parse(localStorage.shorties);
     }
   }
 
   save() {
     // We can only save strings in local Storage. So, let's convert
     // ou array of shortcuts to JSON
-    localStorage.contacts = JSON.stringify(this.listOfShorties);
+    localStorage.shorties = JSON.stringify(this.listOfShorties);
   }
 
   edSaveShorty(idx) {
@@ -307,7 +305,7 @@ class ShortcutManager {
     let itemIdx = parseInt(idx) - 1;
     this.listOfShorties[itemIdx].name = newName.value;
     this.listOfShorties[itemIdx].url = newUrl.value;
-    localStorage.contacts = JSON.stringify(this.listOfShorties);
+    localStorage.shorties = JSON.stringify(this.listOfShorties);
     this.sort();
     this.displayShortcuts("shortcuts");
   }
