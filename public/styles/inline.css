@@ -589,6 +589,13 @@ label > span {
 }
 
 /**
+ *
+ */
+.read-only {
+  background-color: lightgray;
+}
+
+/**
  * Import Styling
  */
 

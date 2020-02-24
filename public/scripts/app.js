@@ -66,11 +66,12 @@ function init() {
 function makeReadOnly(toggleID) {
   for (let i = 1; i <= cm.listOfShorties.length; i++) {
     document.querySelector("input[id=" + toggleID + i + "]").readOnly = true;
+    document.querySelector("input[id=" + toggleID + i + "]").classList.toggle('read-only'); 
   }
 }
 
 // Handle the toggling between edit and read-only.
-// To do: Change background color for read-only.
+// To do: Change background color for read-only. DONE ~mlc 24 Feb 2020
 function toggle(checkboxID) {
   let checkbox = document.getElementById(checkboxID);
   let toggle;
@@ -80,6 +81,7 @@ function toggle(checkboxID) {
     let updateToggle = checkbox.checked
       ? (toggle.readOnly = false)
       : (toggle.readOnly = true);
+    document.querySelector("input[id=" + toggleID + i + "]").classList.toggle('read-only'); 
   }
   toggleID = "copy-link";
   for (let i = 1; i <= cm.listOfShorties.length; i++) {
@@ -87,6 +89,7 @@ function toggle(checkboxID) {
     let updateToggle = checkbox.checked
       ? (toggle.readOnly = false)
       : (toggle.readOnly = true);
+    document.querySelector("input[id=" + toggleID + i + "]").classList.toggle('read-only'); 
   }
 }
 
@@ -178,6 +181,10 @@ function importJsonFile() {
       cm.sort();
       cm.save();
       cm.displayShortcuts("shortcuts");
+      
+      makeReadOnly("shorty-name");
+      makeReadOnly("copy-link");
+
       alert("Imported " + Object.keys(importedJSON).length + " objects!");
       console.log("Imported!");
       document.getElementById("importTextArea").value = '';
