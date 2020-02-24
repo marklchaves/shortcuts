@@ -258,6 +258,8 @@ class ShortcutManager {
     this.sort();
     this.save();
     this.displayShortcuts("shortcuts");
+    makeReadOnly("shorty-name");
+    makeReadOnly("copy-link");
   }
 
   sort() {
