@@ -78,6 +78,7 @@ function toggle(checkboxID) {
   let toggleID = "shorty-name";
   for (let i = 1; i <= cm.listOfShorties.length; i++) {
     toggle = document.getElementById(toggleID + i);
+    if (!toggle) break;
     let updateToggle = checkbox.checked
       ? (toggle.readOnly = false)
       : (toggle.readOnly = true);
@@ -86,6 +87,7 @@ function toggle(checkboxID) {
   toggleID = "copy-link";
   for (let i = 1; i <= cm.listOfShorties.length; i++) {
     toggle = document.getElementById(toggleID + i);
+    if (!toggle) break;
     let updateToggle = checkbox.checked
       ? (toggle.readOnly = false)
       : (toggle.readOnly = true);
@@ -135,9 +137,14 @@ function sort() {
 
 /* Added 20 Feb 2020 ~mlc */
 function searchShorties() {
+  // Reset the edit slider to off for searches.
+  document.getElementById('ed-toggle').checked = false;
   // Display everything if nothing is entered.
   if (searchField.value.trim() === "") {
     cm.displayShortcuts("shortcuts");
+    // Make sure everything is still read-only.
+    makeReadOnly("shorty-name");
+    makeReadOnly("copy-link");
     return;
   }
   const found = cm.listOfShorties.find(
