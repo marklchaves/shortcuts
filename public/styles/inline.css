@@ -115,11 +115,11 @@ h2 {
 }
 
 .header #butRefresh {
-  background: url(/images/refresh.svg)centercenterno-repeat;
+  background: url(/images/refresh.svg) center center no-repeat;
 }
 
 .header #butInstall {
-  background: url(/images/install.svg)centercenterno-repeat;
+  background: url(/images/install.svg) center center no-repeat;
 }
 
 .header .powered-by {
