@@ -16,13 +16,19 @@
  * limitations under the License
  */
 
+:root {
+  --light-color: #FFF;
+  --dark-color: #000;
+  --soft-corner: 5px;
+}
+
 * {
   box-sizing: border-box;
 }
 
 html,
 body {
-  color: #fff;
+  color:  var(--light-color);
   font-family: "Helvetica Neue", "Helvetica", "Verdana", sans-serif;
   font-size: 14px;
   -moz-osx-font-smoothing: grayscale;
@@ -49,13 +55,13 @@ body {
 
 /* Links */
 a {
-  color: #F05E35; /* deep orange */
+  color: var(--light-color);
   text-decoration: none;
   border-bottom: 3px solid;
 }
 
 a:hover {
-  color: #F05E35;
+  color: var(--light-color);
   opacity: 0.75;
 }
 
@@ -66,10 +72,10 @@ a:hover {
 .header {
   align-content: center;
   align-items: stretch;
-  background: #000000; /* Originally #3f51b5 */
+  background:  var(--dark-color); /* Originally #3f51b5 */
   box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 2px 9px 1px rgba(0, 0, 0, 0.12),
     0 4px 2px -2px rgba(0, 0, 0, 0.2);
-  color: #fff;
+  color:  var(--light-color);
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
@@ -117,7 +123,7 @@ h2 {
 }
 
 .header .powered-by {
-  color: white;
+  color:  var(--light-color);
   font-size: 0.6em;
   text-decoration: none;
 }
@@ -183,18 +189,18 @@ h2 {
  */
 .std-button, .copy-button {
   background: transparent;
-  color: #fff;
+  color:  var(--light-color);
   border: 1px solid;
   font-size: 1rem;
   text-transform: uppercase;
   cursor: pointer;
-  border-radius: 2px;
+  border-radius: var(--soft-corner);
   margin-right: 0.25em;
   margin-top: 0.25em;
 }
 
 .std-button:hover {
-  background: #fff;
+  background:  var(--light-color);
   color: #006699;
 }
 
@@ -339,9 +345,9 @@ h2 {
 }
 
 .dialog {
-  background: #000;
-  color: #fff;
-  border-radius: 2px;
+  background:  var(--dark-color);
+  color:  var(--light-color);
+  border-radius: var(--soft-corner);
   box-shadow: 0 0 14px rgba(0, 0, 0, 0.24), 0 14px 28px rgba(0, 0, 0, 0.48);
   left: 50%;
   min-width: 280px;
@@ -378,7 +384,7 @@ h2 {
 
 .dialog .button {
   background: transparent;
-  color: #fff;
+  color:  var(--light-color);
   border: none;
   font-size: 1rem;
   text-transform: uppercase;
@@ -389,8 +395,8 @@ h2 {
  */
 
 .weather-card {
-  background: #25272A;
-  border-radius: 2px;
+  background: #212326;
+  border-radius: var(--soft-corner);
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2),
     0 1px 5px 0 rgba(0, 0, 0, 0.12);
   box-sizing: border-box;
@@ -401,7 +407,7 @@ h2 {
 
 .weather-card .remove-city {
   background-color: transparent;
-  color: #fff;
+  color:  var(--light-color);
   border: none;
   float: right;
   font-size: x-large;
@@ -493,17 +499,9 @@ label > span {
 }
 
 /* The default border isn't respecting mobile widths. */
-.fieldset {
-  border: none; /* Disable */
+fieldset {
+  border: none;
 }
-
-/* Replacement border for misbehaving fieldset. */
-.form-wrapper {
-  border: 1px solid white;
-  border-radius: 5px;
-  padding: 0.5em 0;
-}
-
 
 /* Toggle Styles */
 
@@ -552,8 +550,8 @@ label > span {
   width: 26px;
   left: 0;
   bottom: 2px;
-  color: white;
-  background-color: white;
+  color:  var(--light-color);
+  background-color:  var(--light-color);
   -webkit-transition: .4s;
   transition: .4s;
 }
