@@ -17,6 +17,19 @@
  */
 "use strict";
 
+const shortiesApp = {
+  addShortyContainer: document.getElementById('addShortyContainer'),
+  addShorty: document.getElementById('addShorty'),
+};
+
+/**
+ * Toggles the visibility of the add shorty dialog box.
+ */
+function toggleAddDialog() {
+  shortiesApp.addShortyContainer.classList.toggle('visible');
+  shortiesApp.addShorty.classList.toggle('visible');
+}
+
 (function() {
   new Clipboard(".copy-button");
 })();
@@ -45,12 +58,17 @@ function init() {
   shortiesDiv = document.querySelector("#shortcuts");
   
   // Event Listners
+  
+  // Export and Import
   const expSh = document.getElementById("exportShorties");
   expSh.addEventListener("click", exportToJsonFile, false);
   const impSh = document.getElementById("importShorties");
   impSh.addEventListener("click", importJsonFile, false);
-  //const impText = document.getElementById("importTextArea");
-  //impText.addEventListener("change", importJsonFile, false);
+  
+  // Add
+  // To do: Figure out what to do with these ~mlc 16 March 2020
+  document.getElementById('butAdd').addEventListener('click', toggleAddDialog);
+  // document.getElementById('butDialogCancel').addEventListener('click', toggleAddDialog);
 
   loadList();
 
@@ -113,6 +131,8 @@ function formSubmitted() {
   // refresh the html table
   cm.sort();
   cm.displayShortcuts("shortcuts");
+  
+  toggleAddDialog();
 
   // do not let your browser submit the form using HTTP
   return false;
