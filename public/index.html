@@ -50,53 +50,59 @@
     </header>
 
     <main class="main">
-      <!-- To do: Re-add back in for New Shorty.
-    <button id="butAdd" class="fab" aria-label="Add">
-      <span class="icon add"></span>
-    </button>
-    -->
+      <button id="butAdd" class="fab" aria-label="Add">
+        <span class="icon add"></span>
+      </button>
 
       <div id="about" class="weather-card">
         <h2>Shorties - Another Shortcuts App</h2>
       </div>
 
-      <div class="weather-card">
-        <div>
-          <form onsubmit="return formSubmitted();">
-            <fieldset class="fieldset">
-              <legend>New Shorty</legend>
-              <label for="name">
-                <span>Name</span>
-                <input type="text" id="name" required />
-              </label>
-              <label for="url">
-                <span>URL</span>
-                <input
-                  size="50"
-                  type="url"
-                  id="url"
-                  value="https://"
-                  required
-                />
-                <button class="std-button" title="Add">+</button>
-              </label>
-            </fieldset>
-            <fieldset class="fieldset">
-              <label id="import-label" for="importTextArea">
-                <legend>
-                  Import JSON
-                </legend>
-                <div>
-                  <textarea id="importTextArea" placeholder="Paste your JSON here." value=""></textarea>
-                </div>
-                <div>
-                  <button id="importShorties" class="std-button">
-                    Import
-                  </button>
-                </div>
-              </label>
-            </fieldset>
-          </form>
+      <div id="addShortyContainer">
+        <div class="dialog">
+          <div id="addShorty" class="weather-card">
+            <div>
+              <form onsubmit="return formSubmitted();">
+                <fieldset class="fieldset">
+                  <legend>New Shorty</legend>
+                  <label for="name">
+                    <span>Name</span>
+                    <input type="text" id="name" required />
+                  </label>
+                  <label for="url">
+                    <span>URL</span>
+                    <input
+                      size="50"
+                      type="url"
+                      id="url"
+                      value="https://"
+                      required
+                    />
+                    <button class="std-button" title="Add">+</button>
+                  </label>
+                </fieldset>
+                <fieldset class="fieldset">
+                  <label id="import-label" for="importTextArea">
+                    <legend>
+                      Import JSON
+                    </legend>
+                    <div>
+                      <textarea
+                        id="importTextArea"
+                        placeholder="Paste your JSON here."
+                        value=""
+                      ></textarea>
+                    </div>
+                    <div>
+                      <button id="importShorties" class="std-button">
+                        Import
+                      </button>
+                    </div>
+                  </label>
+                </fieldset>
+              </form>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -130,7 +136,7 @@
         <label>
           <div>
             <button id="exportShorties" class="std-button">
-            Export
+              Export
             </button>
           </div>
         </label>
@@ -138,6 +144,7 @@
       </div>
     </main>
 
+    <!--
     <div id="addDialogContainer">
       <div class="dialog">
         <div class="dialog-title">Add New Shorty</div>
@@ -148,6 +155,7 @@
         </div>
       </div>
     </div>
+    -->
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.4.0/clipboard.min.js"></script>
     <script src="/scripts/luxon-1.11.4.js"></script>
