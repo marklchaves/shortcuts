@@ -16,7 +16,7 @@ Proudly built on Glitch and proudly hosted on Netlify.
 
 ## Motivation
 
-We need to share links all the time. This PWA will help save you time if are tired of:
+This PWA will save you time. Use Shorties instead of:
 
 1. Bringing up a browser, typing in a URL, and waiting for the page to load just to copy the link.
 2. Brining up a browser, opening up the bookmarks manager, searching for a bookmark and hoping it's in there, then finally copying the link of the bookmark.
@@ -142,6 +142,4 @@ specific language governing permissions and limitations under the License.
 
 ## I'll Drink to That ;-)
 
-<a href='https://ko-fi.com/D1D7YARD' target='_blank'><img height='36' style='border:0px;height:36px;' src='https://az743702.vo.msecnd.net/cdn/kofi5.png?v=2' border='0' alt='Buy Me a Coffee at ko-fi.com' /></a>
-
-[codelab]: https://codelabs.developers.google.com/codelabs/your-first-pwapp/
+[![ko-fi](https://www.ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/D1D7YARD)
