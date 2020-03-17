@@ -1,7 +1,7 @@
 /*
  * @license
  * Based on Your First PWA Codelab (https://g.co/codelabs/pwa)
- * Copyright 2019 Google Inc. All rights reserved.
+ * Copyright 2020 Caught My Eye, Dev. All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -397,10 +397,10 @@ h2 {
 }
 
 /**
- * Weather forecast card
+ * Shorties content card
  */
 
-.weather-card {
+.shorty-card {
   background: #212326;
   border-radius: var(--soft-corner);
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2),
@@ -564,21 +564,21 @@ textarea {
  */
 
 @media (max-width: 450px) {
-  .weather-card .date,
-  .weather-card .description {
+  .shorty-card .date,
+  .shorty-card .description {
     font-size: 0.9em;
   }
 
-  .weather-card .current .icon {
+  .shorty-card .current .icon {
     height: 96px;
     width: 96px;
   }
 
-  .weather-card .current .visual {
+  .shorty-card .current .visual {
     font-size: 3em;
   }
 
-  .weather-card .future .oneday .icon {
+  .shorty-card .future .oneday .icon {
     height: 32px;
     width: 32px;
   }
