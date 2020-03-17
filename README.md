@@ -118,7 +118,7 @@ Check the repo's [issues](https://github.com/marklchaves/shortcuts/issues) list.
 There are two known issues at the time of this writing.
 
 1. Editing a search result creates a new entry instead of updating the existing. 
-2. Dupe names and URLs are currently allows. The search will only return the first hit on the name field only. Try to keep the names unique.
+2. Dupe names and URLs are currently **allowed**. The search will only return the first hit on the name field only. Try to keep the names unique.
 
 ## License
 
