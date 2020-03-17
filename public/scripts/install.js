@@ -1,7 +1,7 @@
 /*
  * @license
  * Based on Your First PWA Codelab (https://g.co/codelabs/pwa)
- * Copyright 2019 Google Inc. All rights reserved.
+ * Copyright 2019 Caught My Eye, Dev. All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -68,6 +68,5 @@ window.addEventListener('appinstalled', logAppInstalled);
  * @param {Event} evt
  */
 function logAppInstalled(evt) {
-  // CODELAB: Add code to log the event
-  console.log('Weather App was installed.', evt);
+  console.log('Shorties App was installed.', evt);
 }
