@@ -170,13 +170,17 @@ function searchShorties() {
   const found = cm.listOfShorties.find(
     element => element.name === searchField.value.trim()
   );
+  let idx = cm.listOfShorties.findIndex(
+    element => element.name === searchField.value.trim()
+  );
   if (found) {
+    idx += 1;
     shortiesDiv.innerHTML =
-      cm.renderShortcut(1, found);
-    document.querySelector("#shorty-name1").readOnly = true;
-    document.querySelector("#shorty-name1").classList.toggle('read-only'); 
-    document.querySelector("#copy-link1").readOnly = true;
-    document.querySelector("#copy-link1").classList.toggle('read-only'); 
+      cm.renderShortcut(idx, found);
+    document.querySelector("#shorty-name" + idx).readOnly = true;
+    document.querySelector("#shorty-name" + idx).classList.toggle('read-only'); 
+    document.querySelector("#copy-link" + idx).readOnly = true;
+    document.querySelector("#copy-link" + idx).classList.toggle('read-only'); 
   } else {
     shortiesDiv.innerHTML = "<h2 style='text-align: center;'>Not Found</h2>";
   }
