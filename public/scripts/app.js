@@ -96,7 +96,7 @@ function toggle(checkboxID) {
   let toggleID = "shorty-name";
   for (let i = 1; i <= cm.listOfShorties.length; i++) {
     toggle = document.getElementById(toggleID + i);
-    if (!toggle) break;
+    if (!toggle) continue; // Keep going because we can be in search mode.
     let updateToggle = checkbox.checked
       ? (toggle.readOnly = false)
       : (toggle.readOnly = true);
@@ -105,7 +105,7 @@ function toggle(checkboxID) {
   toggleID = "copy-link";
   for (let i = 1; i <= cm.listOfShorties.length; i++) {
     toggle = document.getElementById(toggleID + i);
-    if (!toggle) break;
+    if (!toggle) continue; // Keep going because we can be in search mode.
     let updateToggle = checkbox.checked
       ? (toggle.readOnly = false)
       : (toggle.readOnly = true);
@@ -252,10 +252,10 @@ class ShortcutManager {
 
   /* TEST */
   addTestData() {
-    var sh = new Shortcut("cme dev", "https://caughtmyeye.dev");
+    var sh = new Shortcut("cme dev", "https://caughtmyeye.cc");
     this.add(sh);
 
-    sh = new Shortcut("cme webdev", "https://caughtmyeye.dev/webdev/");
+    sh = new Shortcut("cme webdev", "https://shorties.caughtmyeye.cc/");
     this.add(sh);
 
     // Let's sort the list of shortcuts by Name
