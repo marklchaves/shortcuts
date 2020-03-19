@@ -1,7 +1,7 @@
 /*
  * @license
  * Based on Your First PWA Codelab (https://g.co/codelabs/pwa)
- * Copyright 2019 Google Inc. All rights reserved.
+ * Copyright 2020 Caught My Eye, Dev. All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -68,7 +68,7 @@ self.addEventListener("activate", evt => {
 
 self.addEventListener("fetch", evt => {
   console.log("[ServiceWorker] Fetch", evt.request.url);
-  // CODELAB: Add fetch event handler here.
+  // To do: Don't need anymore?
   if (evt.request.url.includes("/forecast/")) {
     console.log("[Service Worker] Fetch (data)", evt.request.url);
     evt.respondWith(

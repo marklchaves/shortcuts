@@ -1,7 +1,7 @@
 <!--
  Based on Your First PWA Codelab (https://g.co/codelabs/pwa)
 
- Copyright 2019 Google Inc.
+ Copyright 2020 Caught My Eye, Dev.
 
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
@@ -27,16 +27,12 @@
     <link rel="stylesheet" type="text/css" href="/styles/inline.css" />
     <link rel="icon" href="/images/favicon.ico" type="image/x-icon" />
 
-    <!-- CODELAB: Add link rel manifest -->
     <link rel="manifest" href="/manifest.json" />
-    <!-- CODELAB: Add iOS meta tags and icons -->
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black" />
     <meta name="apple-mobile-web-app-title" content="Shortcuts PWA" />
     <link rel="apple-touch-icon" href="/images/icons/icon-152x152.png" />
-    <!-- CODELAB: Add description here -->
     <meta name="description" content="Shortcuts App" />
-    <!-- CODELAB: Add meta theme-color -->
     <meta name="theme-color" content="#212326" />
   </head>
   <body>
@@ -54,13 +50,13 @@
         <span class="icon add"></span>
       </button>
 
-      <div id="about" class="weather-card">
+      <div id="about" class="shorty-card">
         <h2>Shorties - Another Shortcuts App</h2>
       </div>
 
       <div id="addShortyContainer">
         <div class="dialog">
-          <div id="addShorty" class="weather-card">
+          <div id="addShorty" class="shorty-card">
             <div>
               <form onsubmit="return formSubmitted();">
                 <fieldset class="fieldset">
@@ -106,7 +102,7 @@
         </div>
       </div>
 
-      <div id="search-box" class="weather-card">
+      <div id="search-box" class="shorty-card">
         <div id="search-wrapper" class="column-half">
           <fieldset>
             <legend>Search</legend>
@@ -121,7 +117,7 @@
         </div>
       </div>
 
-      <div class="weather-card">
+      <div class="shorty-card">
         <h2>List of Shorties</h2>
         <label id="toggle-btn" for="ed-toggle" class="switch">
           <input
