@@ -1,7 +1,7 @@
 /*
  * @license
  * Based on Your First PWA Codelab (https://g.co/codelabs/pwa)
- * Copyright 2019 Google Inc. All rights reserved.
+ * Copyright 2020 Caught My Eye, Dev. All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -360,7 +360,7 @@ class ShortcutManager {
     // console.log('idx = ' + idx);
     
     let card = 
-      '\n\n<div id="shorties-list" class="weather-card">' +
+      '\n\n<div id="shorties-list" class="shorty-card">' +
       "<input id='shorty-name" +
       idx +
       "' type='text' value='" +
