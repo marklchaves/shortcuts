@@ -204,8 +204,23 @@ h2 {
   color: #006699;
 }
 
-.del-button, .copy-button {
+.copy-button {
   font-size: 1em;
+}
+
+.del-button {
+  position: absolute;
+  right: 0;
+  top: 0;
+  border: none;
+  font-size: 2em;
+  opacity: 25%;
+}
+
+.del-button:after {
+  display: table;
+  content: "";
+  cleart: both;
 }
 
 .justify-right {
