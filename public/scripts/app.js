@@ -355,12 +355,20 @@ class ShortcutManager {
   }
 
   // Render one shortcut.
+  // To do: Refactor to use a hidden HTML template. ~mlc 21 March 2020
   renderShortcut(idx, sc) {
 
     // console.log('idx = ' + idx);
     
     let card = 
       '\n\n<div id="shorties-list" class="shorty-card">' +
+      '<button id="del-button' +
+      idx +
+      '"' +
+      'onclick="cm.delete(' +
+      idx +
+      ');" ' +
+      'class="std-button del-button" title="Delete Shorty">&times;</button>' +
       "<input id='shorty-name" +
       idx +
       "' type='text' value='" +
@@ -369,13 +377,6 @@ class ShortcutManager {
       idx +
       ");' " +
       "title='Edit Shorty Name' required>" +
-      '&nbsp;<button id="del-button' +
-      idx +
-      '"' +
-      'onclick="cm.delete(' +
-      idx +
-      ');" ' +
-      'class="std-button del-button" title="Delete Shorty">&times;</button>' +
       '<div class="copy-card">' +
       '<input id="copy-link' +
       idx +
