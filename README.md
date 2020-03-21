@@ -33,13 +33,13 @@ This PWA will save you time. Use Shorties instead of:
 
 ## Screen Grabs
 
-![List of Shorties](https://raw.githubusercontent.com/marklchaves/shortcuts/master/screen-grabs/shorties-list-of-shorties.png "List of Shorties")
+![List of Shorties](https://raw.githubusercontent.com/marklchaves/shortcuts/master/screen-grabs/shorties-list-of-shorties.jpg "List of Shorties")
 
 Listing
 
 ---
 
-![Add New Shorty Modal](https://raw.githubusercontent.com/marklchaves/shortcuts/master/screen-grabs/shorties-add-new-modal.png "Add New Shorty Modal")
+![Add New Shorty Modal](https://raw.githubusercontent.com/marklchaves/shortcuts/master/screen-grabs/shorties-add-new-modal.jpg "Add New Shorty Modal")
 
 Add
 
@@ -51,19 +51,19 @@ Import
 
 ---
 
-![Copying a Shorty--What it's all about!](https://raw.githubusercontent.com/marklchaves/shortcuts/master/screen-grabs/shorties-copied-shorty.png "Copying a Shorty--What it's all about!")
+![Copying a Shorty--What it's all about!](https://raw.githubusercontent.com/marklchaves/shortcuts/master/screen-grabs/shorties-copied-shorty.jpg "Copying a Shorty--What it's all about!")
 
 Copying
 
 ---
 
-![Edit Mode](https://raw.githubusercontent.com/marklchaves/shortcuts/master/screen-grabs/shorties-edit-shorty.png "Edit Mode")
+![Edit Mode](https://raw.githubusercontent.com/marklchaves/shortcuts/master/screen-grabs/shorties-edit-shorty.jpg "Edit Mode")
 
 Edit Mode
 
 ---
 
-![Search](https://raw.githubusercontent.com/marklchaves/shortcuts/master/screen-grabs/shorties-search.png "Search")
+![Search](https://raw.githubusercontent.com/marklchaves/shortcuts/master/screen-grabs/shorties-search.jpg "Search")
 
 Simple Search
 
