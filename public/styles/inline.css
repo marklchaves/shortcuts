@@ -208,12 +208,18 @@ h2 {
   font-size: 1em;
 }
 
+@media screen and (max-width: 300px) {
+.del-button {
+  display: none;
+}
+}
 .del-button {
   position: absolute;
   right: 0;
   top: 0;
   border: none;
-  font-size: 2em;
+  font-size: 1.5em;
+  color: gray;
   opacity: 25%;
 }
 
@@ -314,9 +320,10 @@ h2 {
 
 .main {
   flex: 1;
-  overflow-x: hidden;
+  overflow-x: auto;
   overflow-y: auto;
   padding-top: 60px;
+  min-width: 300px;
 }
 
 .main .fab {
@@ -424,6 +431,7 @@ h2 {
   margin: 16px;
   padding: 16px;
   position: relative;
+  min-width: 200px;
 }
 
 /* Shortcuts Form Styles ~mlc */
