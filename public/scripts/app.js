@@ -20,6 +20,7 @@
 const shortiesApp = {
   addShortyContainer: document.getElementById('addShortyContainer'),
   addShorty: document.getElementById('addShorty'),
+  settingsContainer: document.getElementById('settingsContainer')
 };
 
 /**
@@ -28,6 +29,13 @@ const shortiesApp = {
 function toggleAddDialog() {
   shortiesApp.addShortyContainer.classList.toggle('visible');
   shortiesApp.addShorty.classList.toggle('visible');
+}
+
+/**
+ * Toggles the visibility of the add shorty dialog box.
+ */
+function toggleSettingsDialog() {
+  shortiesApp.settingsContainer.classList.toggle('visible');
 }
 
 (function() {
@@ -69,6 +77,8 @@ function init() {
   // To do: Figure out what to do with these ~mlc 16 March 2020
   document.getElementById('butAdd').addEventListener('click', toggleAddDialog);
   // document.getElementById('butDialogCancel').addEventListener('click', toggleAddDialog);
+  
+  document.getElementById('butSettings').addEventListener('click', toggleSettingsDialog);
 
   loadList();
 

@@ -49,7 +49,10 @@
       <button id="butAdd" class="fab" aria-label="Add">
         <span class="icon add"></span>
       </button>
-
+      <button id="butSettings" class="fab" aria-label="Settings">
+        <span class="icon settings"></span>
+      </button>
+      
       <div id="about" class="shorty-card">
         <h2>Shorties - Another Shortcuts App</h2>
       </div>
@@ -106,7 +109,7 @@
         <div id="search-wrapper" class="column-half">
           <fieldset>
             <legend>Search</legend>
-            <input
+            <input class="awesomplete"
               id="searchField"
               type="text"
               value=""
@@ -118,7 +121,9 @@
       </div>
 
       <div class="shorty-card">
-        <h2>List of Shorties</h2>
+        <h2>Shorties</h2>
+        <div id="settingsContainer">
+        <div class="dialog">
         <label id="toggle-btn" for="ed-toggle" class="switch">
           <input
             class="slider-input"
@@ -136,6 +141,8 @@
             </button>
           </div>
         </label>
+          </div>
+        </div>
         <div id="shortcuts"></div>
       </div>
     </main>

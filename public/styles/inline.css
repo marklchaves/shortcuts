@@ -92,13 +92,15 @@ a:hover {
 
 .header h1 {
   flex: 1;
-  font-size: 20px;
-  font-weight: normal;
+  font-size: 1.25rem;
+  font-weight: 500;
   margin: 0;
+  padding: 0;
 }
 
-h2 {
-  font-weight: normal;
+h2, legend {
+  font-weight: 500;
+  font-size: 1.25rem;
 }
 
 .header button {
@@ -262,56 +264,8 @@ h2 {
   background-image: url("/images/add.svg");
 }
 
-.icon.clear-day {
-  background-image: url("/images/clear-day.svg");
-}
-
-.icon.clear-night {
-  background-image: url("/images/clear-night.svg");
-}
-
-.icon.rain {
-  background-image: url("/images/rain.svg");
-}
-
-.icon.snow {
-  background-image: url("/images/snow.svg");
-}
-
-.icon.sleet {
-  background-image: url("/images/sleet.svg");
-}
-
-.icon.wind {
-  background-image: url("/images/wind.svg");
-}
-
-.icon.fog {
-  background-image: url("/images/fog.svg");
-}
-
-.icon.cloudy {
-  background-image: url("/images/cloudy.svg");
-}
-
-.icon.partly-cloudy-day {
-  background-image: url("/images/partly-cloudy-day.svg");
-}
-
-.icon.partly-cloudy-night {
-  background-image: url("/images/partly-cloudy-night.svg");
-}
-
-.icon.hail {
-  background-image: url("/images/hail.svg");
-}
-
-.icon.thunderstorm {
-  background-image: url("/images/thunderstorm.svg");
-}
-
-.icon.tornado {
-  background-image: url("/images/tornado.svg");
+.icon.settings {
+  background-image: url(https://cdn.glitch.com/c394d5b0-ec7b-49ac-ac72-a88b01949a6b%2Fnoun_Settings_3670165.svg?v=1609495820104)
 }
 
 /**
@@ -344,11 +298,17 @@ h2 {
   width: 100%;
 }
 
+#butSettings {
+  color: white;
+  background-color: linen;
+  left: 1rem;
+}
+
 /**
  * Add shorty dialog
  */
 
-#addShortyContainer {
+#addShortyContainer, #settingsContainer {
   background: rgba(0, 0, 0, 0.57);
   height: 100%;
   left: 0;
@@ -366,7 +326,7 @@ h2 {
   opacity: 0;
 }
 
-#addShortyContainer.visible, #addShorty.visible {
+#addShortyContainer.visible, #addShorty.visible, #settingsContainer.visible {
   opacity: 1;
   pointer-events: auto;
   z-index: 1;
@@ -428,8 +388,8 @@ h2 {
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2),
     0 1px 5px 0 rgba(0, 0, 0, 0.12);
   box-sizing: border-box;
-  margin: 16px;
-  padding: 16px;
+  margin: 0.75rem;
+  padding: 0.5rem;
   position: relative;
   min-width: 200px;
 }
@@ -438,7 +398,7 @@ h2 {
 
 label {
   display: inline-block;
-  margin: 0.5em 0;
+  margin: 0.25em 0;
 }
 
 #name,
@@ -580,6 +540,15 @@ fieldset {
 textarea {
   height: 5em;
   width: 100%;
+}
+
+/** Autocomplete Search */
+ul {
+  list-style: none;
+}
+
+.visually-hidden {
+  display: none;
 }
 
 /**

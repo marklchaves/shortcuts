@@ -2,11 +2,11 @@
 
 Nice shorties! Quickly copy/paste your fave URLs without going to bookmarks or the browser. 
 
-**[Install](https://shorties.caughtmyeye.cc)**
+[Install](https://shorties.caughtmyeye.cc)
 
-Based on [Your First Progressive Web App](https://codelabs.developers.google.com/codelabs/your-first-pwapp/#0) codelab.
+Based on [Your First Progressive Web App][codelab] codelab.
 
-Proudly built on Glitch and hosted on Netlify. :punch:
+Proudly built on Glitch and proudly hosted on Netlify.
 
 ![Glitch Badge](https://badge.glitch.me/shorties)
 
