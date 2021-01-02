@@ -410,6 +410,10 @@ label {
   max-width: 55%;
 }
 
+input {
+  border-radius: var(--soft-corner);
+}
+
 input[id^="copy-link"] {
   width: 65%;
   margin-top: 1.25em;
