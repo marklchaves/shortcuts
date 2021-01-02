@@ -19,6 +19,8 @@ This PWA will save you time. Use Shorties instead of:
 1. Bringing up a browser, typing in a URL, and waiting for the page to load just to copy the link.
 2. Bringing up a browser, opening up the bookmarks manager, searching for a bookmark and hoping it's in there, then finally copying the link of the bookmark.
 
+---
+
 ## Features
 
 1. Full CRUD (create, read, update, delete) support.
@@ -26,44 +28,40 @@ This PWA will save you time. Use Shorties instead of:
 3. Case insensitive incremental search for real-time filtering.
 4. Lightweight PWA (Progressive Web App).
 5. Streamlined interface. E.g. auto saves once input field focus changes.
-6. Freely available--no store purchase required.
+6. Freely available&mdash;no store purchase required.
 7. Open source.
+
+---
+
+## Demo
+
+![Copying a Shorty Video](screengrabs/shorties-search-copy-video.gif "Copying a Shorty Video")
+
+---
 
 ## Screengrabs
 
-![List of Shorties](https://raw.githubusercontent.com/marklchaves/shortcuts/master/screen-grabs/shorties-list-of-shorties.jpg "List of Shorties")
+### Copying a Shorty&mdash;What it's all about!
 
-Listing
-
----
-
-![Add New Shorty Modal](https://raw.githubusercontent.com/marklchaves/shortcuts/master/screen-grabs/shorties-add-new-modal.jpg "Add New Shorty Modal")
-
-Add
+![Copying a Shorty&mdash;What it's all about!](screengrabs/shorties-copied-shorty.png "Copying a Shorty&mdash;What it's all about!")
 
 ---
 
-![Import JSON File](https://raw.githubusercontent.com/marklchaves/shortcuts/master/screen-grabs/shorties-import-json.png "Import JSON File")
+### Add Modal&mdash;Add and Import
 
-Import
-
----
-
-![Copying a Shorty--What it's all about!](https://raw.githubusercontent.com/marklchaves/shortcuts/master/screen-grabs/shorties-copied-shorty.jpg "Copying a Shorty--What it's all about!")
-
-Copying
+![Add Modal&mdash;Add and Import](screengrabs/shorties-add-modal.png "Add Modal&mdash;Add and Import")
 
 ---
 
-![Edit Mode](https://raw.githubusercontent.com/marklchaves/shortcuts/master/screen-grabs/shorties-edit-shorty.jpg "Edit Mode")
+### Tools Modal&mdash;Edit and Export
 
-Edit Mode
+![Tools Modal&mdash;Edit and Export](screengrabs/shorties-tools.png "Tools Modal&mdash;Edit and Export")
 
 ---
 
-![Search](https://raw.githubusercontent.com/marklchaves/shortcuts/master/screen-grabs/shorties-search.jpg "Search")
+### Incremental Search
 
-Incremental Search
+![Search](screengrabs/shorties-search.png "Search")
 
 ---
 
@@ -97,7 +95,7 @@ Incremental Search
 
 1. Click on the _gear_ icon in the lower left hand corner of the app. 
 2. Click the **Edit** toggle slider. The slider background turns orange. 
-3. Click on the _gear_ icon again to dismiss the settings modal. The background colour of the Name and URL fields turn white and now are editable.
+3. Click on the _gear_ icon again to dismiss the tools modal. The background colour of the Name and URL fields turn white and now are editable.
 3. Hit the **tab** key to save or click on the _gear_ icon once more to disable edit mode.
 
 Note: The list will automagically be sorted by the Shorty Name.
@@ -113,7 +111,7 @@ The search is case _insensitive_. E.g., A search on "Bali" and "bali" returns "B
 
 1. Click on the _gear_ icon in the lower left hand corner of the app. 
 2. Click the **EXPORT** button. Save the file.
-3. Click on the _gear_ icon again to dismiss the settings modal.
+3. Click on the _gear_ icon again to dismiss the tools modal.
 
 ### Delete
 
@@ -139,14 +137,11 @@ These are the known issues at the time of writing.
 
 Copyright 2021 caught my eye, dev.
 
-Licensed to the Apache Software Foundation (ASF) under one or more contributor license agreements. See the NOTICE file distributed with this work for
-additional information regarding copyright ownership. The ASF licenses this file to you under the Apache License, Version 2.0 (the “License”); you may not
-use this file except in compliance with the License. You may obtain a copy of the License at
+Licensed to the Apache Software Foundation (ASF) under one or more contributor license agreements. See the NOTICE file distributed with this work for additional information regarding copyright ownership. The ASF licenses this file to you under the Apache License, Version 2.0 (the “License”); you may not use this file except in compliance with the License. You may obtain a copy of the License at
 
 [http://www.apache.org/licenses/LICENSE-2.0](http://www.apache.org/licenses/LICENSE-2.0)
 
-Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an “AS IS” BASIS, WITHOUT WARRANTIES OR
-CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an “AS IS” BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
 
 ---
 

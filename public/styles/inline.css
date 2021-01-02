@@ -264,8 +264,8 @@ h2, legend {
   background-image: url("/images/add.svg");
 }
 
-.icon.settings {
-  background-image: url(https://cdn.glitch.com/c394d5b0-ec7b-49ac-ac72-a88b01949a6b%2Fnoun_Settings_3670165.svg?v=1609495820104)
+.icon.tools {
+  background-image: url(/images/gear.svg)
 }
 
 /**
@@ -279,6 +279,8 @@ h2, legend {
   padding-top: 60px;
   min-width: 300px;
 }
+
+/** Mainly for the bottom sticky buttons */
 
 .main .fab {
   background-color: slategray;
@@ -298,7 +300,9 @@ h2, legend {
   width: 100%;
 }
 
-#butSettings {
+/** Tools (gear) button */
+
+#butTools {
   color: white;
   background-color: linen;
   left: 1rem;
@@ -308,7 +312,7 @@ h2, legend {
  * Add shorty dialog
  */
 
-#addShortyContainer, #settingsContainer {
+#addShortyContainer, #toolsContainer {
   background: rgba(0, 0, 0, 0.57);
   height: 100%;
   left: 0;
@@ -326,7 +330,7 @@ h2, legend {
   opacity: 0;
 }
 
-#addShortyContainer.visible, #addShorty.visible, #settingsContainer.visible {
+#addShortyContainer.visible, #addShorty.visible, #toolsContainer.visible {
   opacity: 1;
   pointer-events: auto;
   z-index: 1;
@@ -427,7 +431,7 @@ fieldset {
   font-size: 1.25rem;
 }
 
-/* Toggle Styles */
+/** Toggle Styles */
 
  /* The switch - the box around the slider */
 .switch {
