@@ -177,23 +177,40 @@ function searchShorties() {
     makeReadOnly("copy-link");
     return;
   }
+  /*
   const found = cm.listOfShorties.find(
-    element => element.name === searchField.value.trim()
+    element => element.name.toLowerCase() === searchField.value.trim().toLowerCase()
   );
   let idx = cm.listOfShorties.findIndex(
-    element => element.name === searchField.value.trim()
+    element => element.name.toLowerCase() === searchField.value.trim().toLowerCase()
   );
+  */
+  let found;
+  let idx;
+  shortiesDiv.innerHTML = '';
+  for (let j = 0; j < cm.listOfShorties.length ; j++) {
+    
+    let re = new RegExp(searchField.value.trim(), 'i');
+    found = cm.listOfShorties[j].name.match(re);
+    console.log('listOfShorties[j] = ', cm.listOfShorties[j]);
+    console.log('re = ', re);
+    console.log('found = ', found);
+    console.log('j = ', j);
+
   if (found) {
-    idx += 1;
-    shortiesDiv.innerHTML =
-      cm.renderShortcut(idx, found);
+    //idx += 1;
+    idx = j;
+    shortiesDiv.innerHTML +=
+      cm.renderShortcut(idx, cm.listOfShorties[j]); //found);
     document.querySelector("#shorty-name" + idx).readOnly = true;
     document.querySelector("#shorty-name" + idx).classList.toggle('read-only'); 
     document.querySelector("#copy-link" + idx).readOnly = true;
     document.querySelector("#copy-link" + idx).classList.toggle('read-only'); 
-  } else {
+  } /* else {
     shortiesDiv.innerHTML = "<h2 style='text-align: center;'>Not Found</h2>";
-  }
+  } */
+    
+  } // for
 }
 
 /* Added 21 Feb 2020 ~mlc */
