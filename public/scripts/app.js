@@ -18,26 +18,27 @@
 "use strict";
 
 const shortiesApp = {
-  addShortyContainer: document.getElementById('addShortyContainer'),
-  addShorty: document.getElementById('addShorty'),
-  toolsContainer: document.getElementById('toolsContainer')
+  addShortyContainer: document.getElementById("addShortyContainer"),
+  addShorty: document.getElementById("addShorty"),
+  toolsContainer: document.getElementById("toolsContainer")
 };
 
 /**
  * Toggles the visibility of the add shorty dialog box.
  */
 function toggleAddDialog() {
-  shortiesApp.addShortyContainer.classList.toggle('visible');
-  shortiesApp.addShorty.classList.toggle('visible');
+  shortiesApp.addShortyContainer.classList.toggle("visible");
+  shortiesApp.addShorty.classList.toggle("visible");
 }
 
 /**
  * Toggles the visibility of the add shorty dialog box.
  */
 function toggleToolsDialog() {
-  shortiesApp.toolsContainer.classList.toggle('visible');
+  shortiesApp.toolsContainer.classList.toggle("visible");
 }
 
+/** Clipboard class for copying and pasting. */
 (function() {
   new Clipboard(".copy-button");
 })();
@@ -64,21 +65,23 @@ function init() {
   // Search
   searchField = document.querySelector("#searchField");
   shortiesDiv = document.querySelector("#shortcuts");
-  
+
   // Event Listners
-  
+
   // Export and Import
   const expSh = document.getElementById("exportShorties");
   expSh.addEventListener("click", exportToJsonFile, false);
   const impSh = document.getElementById("importShorties");
   impSh.addEventListener("click", importJsonFile, false);
-  
+
   // Add
   // To do: Figure out what to do with these ~mlc 16 March 2020
-  document.getElementById('butAdd').addEventListener('click', toggleAddDialog);
+  document.getElementById("butAdd").addEventListener("click", toggleAddDialog);
   // document.getElementById('butDialogCancel').addEventListener('click', toggleAddDialog);
-  
-  document.getElementById('butTools').addEventListener('click', toggleToolsDialog);
+
+  document
+    .getElementById("butTools")
+    .addEventListener("click", toggleToolsDialog);
 
   loadList();
 
@@ -94,7 +97,9 @@ function init() {
 function makeReadOnly(toggleID) {
   for (let i = 1; i <= cm.listOfShorties.length; i++) {
     document.querySelector("input[id=" + toggleID + i + "]").readOnly = true;
-    document.querySelector("input[id=" + toggleID + i + "]").classList.toggle('read-only'); 
+    document
+      .querySelector("input[id=" + toggleID + i + "]")
+      .classList.toggle("read-only");
   }
 }
 
@@ -110,7 +115,9 @@ function toggle(checkboxID) {
     let updateToggle = checkbox.checked
       ? (toggle.readOnly = false)
       : (toggle.readOnly = true);
-    document.querySelector("input[id=" + toggleID + i + "]").classList.toggle('read-only'); 
+    document
+      .querySelector("input[id=" + toggleID + i + "]")
+      .classList.toggle("read-only");
   }
   toggleID = "copy-link";
   for (let i = 1; i <= cm.listOfShorties.length; i++) {
@@ -119,7 +126,9 @@ function toggle(checkboxID) {
     let updateToggle = checkbox.checked
       ? (toggle.readOnly = false)
       : (toggle.readOnly = true);
-    document.querySelector("input[id=" + toggleID + i + "]").classList.toggle('read-only'); 
+    document
+      .querySelector("input[id=" + toggleID + i + "]")
+      .classList.toggle("read-only");
   }
 }
 
@@ -141,10 +150,10 @@ function formSubmitted() {
   // refresh the html table
   cm.sort();
   cm.displayShortcuts("shortcuts");
-  
+
   toggleAddDialog();
 
-  // do not let your browser submit the form using HTTP
+  // Don't let the browser submit the form using HTTP.
   return false;
 }
 
@@ -168,7 +177,7 @@ function sort() {
 /* Added 20 Feb 2020 ~mlc */
 function searchShorties() {
   // Reset the edit slider to off for searches.
-  document.getElementById('ed-toggle').checked = false;
+  document.getElementById("ed-toggle").checked = false;
   // Display everything if nothing is entered.
   if (searchField.value.trim() === "") {
     cm.displayShortcuts("shortcuts");
@@ -177,42 +186,26 @@ function searchShorties() {
     makeReadOnly("copy-link");
     return;
   }
-  /*
-  const found = cm.listOfShorties.find(
-    element => element.name.toLowerCase() === searchField.value.trim().toLowerCase()
-  );
-  let idx = cm.listOfShorties.findIndex(
-    element => element.name.toLowerCase() === searchField.value.trim().toLowerCase()
-  );
-  */
+  /* Incremental Search 2 Jan 2021 ~mlc */
   let found;
   let idx;
-  shortiesDiv.innerHTML = '';
-  for (let j = 0; j < cm.listOfShorties.length ; j++) {
-    
-    let re = new RegExp(searchField.value.trim(), 'i');
+  shortiesDiv.innerHTML = "";
+  for (let j = 0; j < cm.listOfShorties.length; j++) {
+    let re = new RegExp(searchField.value.trim(), "i");
     found = cm.listOfShorties[j].name.match(re);
-    /* DEBUG
-    console.log('listOfShorties[j] = ', cm.listOfShorties[j]);
-    console.log('re = ', re);
-    console.log('found = ', found);
-    console.log('j = ', j);
-    */
-
-  if (found) {
-    //idx += 1;
-    idx = j;
-    shortiesDiv.innerHTML +=
-      cm.renderShortcut(idx, cm.listOfShorties[j]); //found);
-    document.querySelector("#shorty-name" + idx).readOnly = true;
-    document.querySelector("#shorty-name" + idx).classList.toggle('read-only'); 
-    document.querySelector("#copy-link" + idx).readOnly = true;
-    document.querySelector("#copy-link" + idx).classList.toggle('read-only'); 
-  } /* else {
-    shortiesDiv.innerHTML = "<h2 style='text-align: center;'>Not Found</h2>";
-  } */
-    
+    if (found) {
+      // TO DO: Refactor into a function 2 Jan 2021 ~mlc.
+      idx = j;
+      shortiesDiv.innerHTML += cm.renderShortcut(idx, cm.listOfShorties[j]); //found);
+      document.querySelector("#shorty-name" + idx).readOnly = true;
+      document
+        .querySelector("#shorty-name" + idx)
+        .classList.toggle("read-only");
+      document.querySelector("#copy-link" + idx).readOnly = true;
+      document.querySelector("#copy-link" + idx).classList.toggle("read-only");
+    }
   } // for
+  if (shortiesDiv.innerHTML === "") shortiesDiv.innerHTML = "<h2 style='text-align: center;'>Not Found</h2>";
 }
 
 /* Added 21 Feb 2020 ~mlc */
@@ -245,19 +238,18 @@ function importJsonFile() {
       cm.sort();
       cm.save();
       cm.displayShortcuts("shortcuts");
-      
+
       makeReadOnly("shorty-name");
       makeReadOnly("copy-link");
 
       alert("Imported " + Object.keys(importedJSON).length + " objects!");
       console.log("Imported!");
-      document.getElementById("importTextArea").value = '';
+      document.getElementById("importTextArea").value = "";
     }
   } else {
     alert("Nothing to import.");
   }
 }
-
 
 /**
  * || Class
@@ -274,8 +266,8 @@ class Shortcut {
  */
 class ShortcutManager {
   constructor() {
-    // when we build the shortcut manager, it
-    // has an empty list of shortcuts
+    // When we build the shortcut manager, it
+    // has an empty list of shortcuts.
     this.listOfShorties = [];
   }
 
@@ -287,11 +279,11 @@ class ShortcutManager {
     sh = new Shortcut("cme webdev", "https://shorties.caughtmyeye.cc/");
     this.add(sh);
 
-    // Let's sort the list of shortcuts by Name
+    // Let's sort the list of shortcuts by Name.
     this.sort();
   }
 
-  // Will erase all shortcuts
+  // Will erase all shortcuts.
   empty() {
     this.listOfShorties = [];
   }
@@ -307,7 +299,7 @@ class ShortcutManager {
       var s = this.listOfShorties[i];
 
       if (s.url === shortcut.url) {
-        // remove the shortcut at index i
+        // Remove the shortcut at index i.
         this.listOfShorties.splice(i, i);
         // stop/exit the loop
         break;
@@ -351,16 +343,15 @@ class ShortcutManager {
 
   load() {
     if (localStorage.shorties !== undefined) {
-      // the array of shortcuts is saved in JSON, let's convert
+      // The array of Shorties is saved in JSON, let's convert
       // it back to a real JavaScript object.
-      // TO DO: change name to shortcuts
       this.listOfShorties = JSON.parse(localStorage.shorties);
     }
   }
 
   save() {
     // We can only save strings in local Storage. So, let's convert
-    // ou array of shortcuts to JSON
+    // ou array of Shorties to JSON.
     localStorage.shorties = JSON.stringify(this.listOfShorties);
   }
 
@@ -383,13 +374,12 @@ class ShortcutManager {
     this.displayShortcuts("shortcuts");
   }
 
-  // Render one shortcut.
+  // Render one Shorty.
   // To do: Refactor to use a hidden HTML template. ~mlc 21 March 2020
   renderShortcut(idx, sc) {
-
     // console.log('idx = ' + idx);
-    
-    let card = 
+
+    let card =
       '\n\n<div id="shorties-list" class="shorty-card">' +
       '<button id="del-button' +
       idx +
@@ -428,26 +418,24 @@ class ShortcutManager {
       "</div></div>";
 
     return card;
-
   }
 
   // To do: Refactor to be reusable. Maybe public static.
   displayShortcuts(sContainer) {
-    // empty the container that contains the results
+    // Empty the container that contains the results.
     let container = document.querySelector("#" + sContainer);
     container.innerHTML = "";
 
     if (this.listOfShorties.length === 0) {
       container.innerHTML =
         "<p style='text-align: center;'>No shorties to display!</p>";
-      // stop the execution of this method
       return;
     }
 
     var card = "";
     var idx = 0;
 
-    // iterate on the array of shortcuts
+    // Iterate on the array of Shorties.
     // To do: Add confirmation modal for delete.
 
     for (let i = 0; i < this.listOfShorties.length; i++) {
@@ -455,9 +443,9 @@ class ShortcutManager {
       card += this.renderShortcut(++idx, this.listOfShorties[i]);
     }
 
-    // adds the table to the div
+    // Adds the table to the div.
     container.innerHTML += card;
 
-    // console.log("card = " + card);    
+    // console.log("card = " + card);
   }
 }
