@@ -192,10 +192,12 @@ function searchShorties() {
     
     let re = new RegExp(searchField.value.trim(), 'i');
     found = cm.listOfShorties[j].name.match(re);
+    /* DEBUG
     console.log('listOfShorties[j] = ', cm.listOfShorties[j]);
     console.log('re = ', re);
     console.log('found = ', found);
     console.log('j = ', j);
+    */
 
   if (found) {
     //idx += 1;
