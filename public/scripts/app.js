@@ -195,7 +195,7 @@ function searchShorties() {
     found = cm.listOfShorties[j].name.match(re);
     if (found) {
       // TO DO: Refactor into a function 2 Jan 2021 ~mlc.
-      idx = j;
+      idx = j + 1; // HTML display ID is 1 greater than array index.
       shortiesDiv.innerHTML += cm.renderShortcut(idx, cm.listOfShorties[j]); //found);
       document.querySelector("#shorty-name" + idx).readOnly = true;
       document
@@ -308,7 +308,7 @@ class ShortcutManager {
   }
 
   delete(idx) {
-    let itemIdx = parseInt(idx) - 1;
+    let itemIdx = parseInt(idx) - 1; // Array index is 1 less than HTML display index.
     console.log("Deleting idx = " + itemIdx);
     this.listOfShorties.splice(itemIdx, 1);
     this.sort();
@@ -366,7 +366,7 @@ class ShortcutManager {
       alert("Can't have a blank URL.");
       return;
     }
-    let itemIdx = parseInt(idx) - 1;
+    let itemIdx = parseInt(idx) - 1; // Array index is 1 less than HTML display index.
     this.listOfShorties[itemIdx].name = newName.value;
     this.listOfShorties[itemIdx].url = newUrl.value;
     localStorage.shorties = JSON.stringify(this.listOfShorties);
