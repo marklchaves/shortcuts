@@ -1,7 +1,7 @@
 <!--
  Based on Your First PWA Codelab (https://g.co/codelabs/pwa)
 
- Copyright 2020 Caught My Eye, Dev.
+ Copyright 2021 Caught My Eye, Dev.
 
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
@@ -37,20 +37,35 @@
   </head>
   <body>
     <header class="header">
-      <h1>
-        Shorties &bull; Another Shortcuts App &bull;
+      <div>
         <a href="https://caughtmyeye.cc/">
-          a cme dev production
+          <img src="/images/icons/icon-32x32.png" alt="a cme dev production"
+          title="a cme dev production"/>
         </a>
-      </h1>
-      <button id="butInstall" aria-label="Install" hidden></button>
+      </div>
+      <div id="search-box">
+        <div id="search-wrapper">
+          <fieldset>
+            <input
+              id="searchField"
+              type="search"
+              value=""
+              oninput="searchShorties()"
+              placeholder="Search shorties"
+            />
+          </fieldset>
+        </div>
+      </div>
+      <div>
+        <button id="butInstall" aria-label="Install" hidden></button>
+      </div>
     </header>
 
     <main class="main">
-      <button id="butAdd" class="fab" aria-label="Add">
+      <button id="butAdd" class="fab icon--hover" aria-label="Add">
         <span class="icon add"></span>
       </button>
-      <button id="butTools" class="fab" aria-label="Tools">
+      <button id="butTools" class="fab icon--hover" aria-label="Tools">
         <span class="icon tools"></span>
       </button>
 
@@ -102,41 +117,27 @@
         </div>
       </div>
 
-      <div id="search-box" class="shorty-card">
-        <div id="search-wrapper" class="column-half">
-          <fieldset>
-            <input class="awesomplete"
-              id="searchField"
-              type="search"
-              value=""
-              oninput="searchShorties()"
-              placeholder="Search shorties"
-            />
-          </fieldset>
-        </div>
-      </div>
-
       <div class="shorty-card">
         <h2>Shorties</h2>
         <div id="toolsContainer">
-        <div class="dialog">
-        <label id="toggle-btn" for="ed-toggle" class="switch">
-          <input
-            class="slider-input"
-            id="ed-toggle"
-            type="checkbox"
-            onclick="toggle('ed-toggle')"
-            value="1"
-          />
-          <span class="slider round"></span>
-        </label>
-        <label>
-          <div>
-            <button id="exportShorties" class="std-button">
-              Export
-            </button>
-          </div>
-        </label>
+          <div class="dialog">
+            <label id="toggle-btn" for="ed-toggle" class="switch">
+              <input
+                class="slider-input"
+                id="ed-toggle"
+                type="checkbox"
+                onclick="toggle('ed-toggle')"
+                value="1"
+              />
+              <span class="slider round"></span>
+            </label>
+            <label>
+              <div>
+                <button id="exportShorties" class="std-button">
+                  Export
+                </button>
+              </div>
+            </label>
           </div>
         </div>
         <div id="shortcuts"></div>

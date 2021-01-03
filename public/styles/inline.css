@@ -18,8 +18,10 @@
 
 :root {
   --light-color: #FFF;
+  --off-black: #111;
   --dark-color: #000;
   --soft-corner: 5px;
+  --dim-hover: 85%;
 }
 
 * {
@@ -46,7 +48,7 @@ html {
 body {
   align-content: stretch;
   align-items: stretch;
-  background: #111111; /* light black */
+  background: var(--off-black); /* light black */
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
@@ -81,7 +83,7 @@ a:hover {
   flex-wrap: nowrap;
   font-size: 20px;
   height: 56px;
-  justify-content: flex-start;
+  justify-content: space-between;
   padding: 16px 16px 0 16px;
   position: fixed;
   transition: transform 0.233s cubic-bezier(0, 0, 0.21, 1) 0.1s;
@@ -128,6 +130,15 @@ h2, legend {
   color:  var(--light-color);
   font-size: 0.6em;
   text-decoration: none;
+}
+
+.header a {
+  border: none;
+}
+
+.header fieldset {
+  padding: 0;
+  margin: 0;
 }
 
 /**
@@ -276,14 +287,14 @@ h2, legend {
   flex: 1;
   overflow-x: auto;
   overflow-y: auto;
-  padding-top: 60px;
+  padding: 3.5rem 0 5rem 0;
   min-width: 300px;
 }
 
 /** Mainly for the bottom sticky buttons */
 
 .main .fab {
-  background-color: slategray;
+  background-color: darkslategray;
   border-radius: 50%;
   bottom: 1rem;
   height: 56px;
@@ -303,9 +314,12 @@ h2, legend {
 /** Tools (gear) button */
 
 #butTools {
-  color: white;
-  background-color: linen;
+  background-color: slategray;
   left: 1rem;
+}
+
+.icon--hover:hover {
+  opacity: var(--dim-hover);
 }
 
 /**
@@ -433,6 +447,7 @@ fieldset {
 
 #searchField {
   font-size: 1.25rem;
+  width: 25rem;
 }
 
 /** Toggle Styles */
