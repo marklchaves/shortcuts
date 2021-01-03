@@ -294,13 +294,11 @@ h2, legend {
 /** Mainly for the bottom sticky buttons */
 
 .main .fab {
-  background-color: darkslategray;
   border-radius: 50%;
   bottom: 1rem;
   height: 56px;
   padding: 12px;
   position: fixed;
-  right: 1rem;
   width: 56px;
   z-index: 1000;
 }
@@ -309,6 +307,13 @@ h2, legend {
   display: inline-block;
   height: 100%;
   width: 100%;
+}
+
+/** Add (+) button */
+
+#butAdd {
+  background-color: darkslategray;
+  right: 1rem;
 }
 
 /** Tools (gear) button */
@@ -447,7 +452,7 @@ fieldset {
 
 #searchField {
   font-size: 1.25rem;
-  width: 25rem;
+  width: 15rem;
 }
 
 /** Toggle Styles */
@@ -596,5 +601,11 @@ ul {
   .shorty-card .future .oneday .icon {
     height: 32px;
     width: 32px;
+  }
+}
+
+@media (min-width: 767.998px) {
+  #searchField {
+    width: 25rem;
   }
 }
