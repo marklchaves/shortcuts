@@ -127,7 +127,7 @@ Check the repo's [issues](https://github.com/marklchaves/shortcuts/issues) list.
 
 These are the known issues at the time of writing.
 
-1. Editing a search result creates a new entry instead of updating the existing. 
+1. <s>Editing a search result creates a new entry instead of updating the existing.</s> Fixed in 1.0.1.
 2. Dupe names and URLs are currently **allowed**. The search will only return the first hit on the name field only. Try to keep the names unique.
 3. Deleting a _Shorty_ is instantaneous. There's no warning prompt.
 
