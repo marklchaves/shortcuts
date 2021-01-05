@@ -292,6 +292,9 @@ class ShortcutManager {
     this.listOfShorties.push(shortcut);
     this.sort();
     this.save();
+    this.displayShortcuts("shortcuts");
+    makeReadOnly("shorty-name");
+    makeReadOnly("copy-link");
   }
 
   remove(shortcut) {
